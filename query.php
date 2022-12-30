@@ -8,7 +8,7 @@ if ($conn->connect_error) {
     die("连接数据库失败");
 }
 
-$user_id = 336;
+$user_id = intval($_GET['user']);
 
 function query_one($sql) {
     global $conn, $user_id;
