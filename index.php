@@ -44,6 +44,11 @@ require 'query.php';
         你最关注的一个帖子是#<?php echo $most_focused_post['hole_id'] ?>，
         你在这个帖子下回复了<?php echo $most_focused_post['reply']?>条内容
     </p>
+
+    <p>
+        你发帖最频繁的一天是<?php echo $most_reply_day['date']?>，
+        你在这一天发了<?php echo $most_reply_day['reply']?>个帖子
+    </p>
 <?php else: ?>
     <p>你没回贴</p>
 <?php endif; ?>

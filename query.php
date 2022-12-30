@@ -86,3 +86,12 @@ WHERE user_id = ?
 GROUP BY hole_id
 ORDER BY reply DESC
 LIMIT 1;");
+
+$most_reply_day = query_one(
+"SELECT DATE(created_at) AS date, COUNT(*) as reply
+FROM floor
+WHERE user_id = ?
+  AND created_at BETWEEN '2022-8-28' AND '2023-01-07'
+GROUP BY DATE(created_at)
+ORDER BY reply DESC
+LIMIT 1;");
