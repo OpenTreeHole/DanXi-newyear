@@ -36,11 +36,13 @@ require 'query.php';
 
 <?php if ($total_reply_num['total'] > 0): ?>
     <p>总共的回帖数量为：<?php echo $total_reply_num['total']?></p>
-
     <p>最高点赞为##<?php echo $highest_like_num['floor_id']?>，点赞数为：<?php echo $highest_like_num['likes'] ?>，内容为：</p>
-    
     <p>
         <?php echo $highest_like_num['content']?>
+    </p>
+    <p>
+        你最关注的一个帖子是#<?php echo $most_focused_post['hole_id'] ?>，
+        你在这个帖子下回复了<?php echo $most_focused_post['reply']?>条内容
     </p>
 <?php else: ?>
     <p>你没回贴</p>
