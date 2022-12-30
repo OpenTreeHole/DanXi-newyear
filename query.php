@@ -1,7 +1,5 @@
 <?php
 
-
-
 $conn = new mysqli(getenv("DB_HOST"), 
                    getenv("DB_USER"), 
                    getenv("DB_PASSWORD"), 
@@ -10,7 +8,7 @@ if ($conn->connect_error) {
     die("连接数据库失败");
 }
 
-$user_id = 910;
+$user_id = 91;
 
 function query_one($sql) {
     global $conn, $user_id;
