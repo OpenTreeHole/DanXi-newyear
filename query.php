@@ -8,7 +8,7 @@ if ($conn->connect_error) {
     die("连接数据库失败");
 }
 
-$user_id = 91;
+$user_id = 336;
 
 function query_one($sql) {
     global $conn, $user_id;
@@ -95,3 +95,9 @@ WHERE user_id = ?
 GROUP BY DATE(created_at)
 ORDER BY reply DESC
 LIMIT 1;");
+
+$total_like = query_one(
+"SELECT SUM(like_data) AS likes
+FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
+WHERE floor.user_id = ?
+  AND floor.created_at BETWEEN '2022-8-28' AND '2023-01-07';");

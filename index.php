@@ -40,6 +40,7 @@ require 'query.php';
     <p>
         <?php echo $highest_like_num['content']?>
     </p>
+    <p>你总共获得了<?php echo $total_like['likes']?>个赞</p>
     <p>
         你最关注的一个帖子是#<?php echo $most_focused_post['hole_id'] ?>，
         你在这个帖子下回复了<?php echo $most_focused_post['reply']?>条内容
@@ -54,11 +55,9 @@ require 'query.php';
 <?php endif; ?>
 
 <p>
-你一共举报了<?php echo $report_num['total']?>次，
-其中<?php echo $report_delete_num['total']?>帖子个被删了
+    你一共举报了<?php echo $report_num['total']?>次，
+    其中<?php echo $report_delete_num['total']?>帖子个被删了
 </p>
-
-
 
 
 </body>
