@@ -37,8 +37,7 @@ $highest_reply_hole = query_one(
 FROM hole JOIN floor ON hole.id = floor.hole_id
 WHERE hole.user_id = ?
   AND hole.created_at BETWEEN '2022-8-28' AND '2023-01-07'
-  AND storey = 1
-ORDER BY reply DESC
+ORDER BY reply DESC, floor.id
 LIMIT 1;");
 
 $total_reply_num = query_one(
