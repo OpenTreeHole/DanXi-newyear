@@ -31,12 +31,18 @@ require 'query.php';
 
 <p>帖子被收藏数：<?php echo $highest_fav_num['total']?></p>
 
-<p>最高点赞为##<?php echo $highest_like_num['floor_id']?>，点赞数为：<?php echo $highest_like_num['likes'] ?></p>
+<p>最高点赞为##<?php echo $highest_like_num['floor_id']?>，点赞数为：<?php echo $highest_like_num['likes'] ?>，内容为：</p>
 
-<p>你最喜欢用的Tag是<?php echo "TODO"?></p>
+<p>
+<?php echo $highest_like_num['content']?>
+</p>
 
+<!-- <p>你最喜欢用的Tag是<?php echo "TODO"?></p> -->
 
-
+<p>
+你一共举报了<?php echo $report_num['total']?>次，
+其中<?php echo $report_delete_num['total']?>帖子个被删了
+</p>
 
 
 
