@@ -94,3 +94,9 @@ $total_like = query_one(
 FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
 WHERE floor.user_id = ?
   AND floor.created_at BETWEEN '2022-8-28' AND '2023-01-07';");
+
+$total_replied_hole_num = query_one(
+"SELECT COUNT(DISTINCT hole_id) AS total
+FROM floor
+WHERE user_id = ?
+  AND created_at BETWEEN '2022-8-28' AND '2023-01-07';");

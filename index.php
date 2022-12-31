@@ -94,11 +94,13 @@
                 <div class="segment">
                     <p>
                         这半年，你在
-                        <strong class="keyword">TODO</strong>
+                        <strong class="keyword">
+                            <?php echo $total_replied_hole_num['total'] ?>
+                        </strong>
                         个洞里留下了自己的足迹
                     </p>
                     <p>
-                        蓦然回首，树洞里已处处有你的痕迹 // TODO
+                        蓦然回首，树洞里已处处有你的痕迹 // TODO: switch
                     </p>
                 </div>
 
@@ -141,6 +143,7 @@
                         <strong class="keyword">
                         <?php echo $most_focused_post['reply'] ?>
                         </strong>
+                        条回复！
                     </p>
                     <p>思维的火花</p>
                     <p>在热烈的讨论中绽放</p>
