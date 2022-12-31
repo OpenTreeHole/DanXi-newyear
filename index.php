@@ -27,7 +27,6 @@
                 </div>
 
                 <div class="segment">
-                    <strong>TODO: 未完成</strong>
                     <p>
                         <strong class="keyword">
                             某年某月某日

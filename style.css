@@ -1,33 +1,37 @@
 body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
     margin: 0;
-    font-family: sans-serif;
-    padding: 0px;
-    margin: 0px;
-}
-
-main {
-    max-width: 500px;
-    height: 100vh;
     padding: 0;
 }
 
-section {
-    padding: 15px;
-}
-
 .segment {
+    width: 75%;
+    padding-left: 15px;
     padding-bottom: 15px;
 }
 
 .keyword {
-    /* background-image: linear-gradient(90deg,
-            #2e4f8b 0%,
-            #3e589d 35%,
-            #8f619b 60%,
-            #d0718f 70%);
-    background-clip: text;
-    background-clip: text;
-    color: transparent; */
     font-weight: bolder;
     font-size: 1.5em;
+}
+
+/* swiper layout config */
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
