@@ -2,7 +2,7 @@
 
 body {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     margin: 0;
     padding: 0;
     color: white;
@@ -43,8 +43,8 @@ blockquote {
 }
 
 .quote-icon svg {
-    width: 50px;
-    height: 40px;
+    width: 2em;
+    height: 2em;
     fill: cyan;
 }
 
@@ -55,7 +55,7 @@ blockquote {
 
 .quote-content {
     overflow-y: auto;
-    height: 400px;
+    max-height: 17em;
 }
 
 /* swiper layout config */
