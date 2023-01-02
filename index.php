@@ -16,6 +16,7 @@
 <body>
     <main class="swiper">
         <div class="swiper-wrapper container">
+            <!-- 用户注册信息 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -48,6 +49,7 @@
                 </div>
             </section>
 
+            <!-- 发帖信息 -->
             <section class="swiper-slide">
                 <?php if ($total_hole_num['total'] > 0): ?>
                 <div class="segment">
@@ -92,16 +94,7 @@
                         </div>
                     </blockquote>
                 </div>
-                <div class="segment">
-                    <p>
-                        你的帖子一共被收藏了
-                        <strong class="keyword">
-                            <?php echo $highest_fav_num['total'] ?>
-                        </strong>
-                        次
-                    </p>
-                    <p>每一颗五角星背后，都有另一个人的默默期待</p>
-                </div>
+
                 <?php else: ?>
                 <div class="segment">
                     <p>本学期的你在树洞默默潜水</p>
@@ -111,6 +104,7 @@
             </section>
         
             <?php if ($total_reply_num['total'] > 0): ?>
+            <!-- 回贴信息 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -118,11 +112,21 @@
                         <strong class="keyword">
                             <?php echo $total_replied_hole_num['total'] ?>
                         </strong>
-                        个洞里留下了自己的足迹
+                        个洞里留下了自己的足迹，一共做出了
+                        <strong class="keyword">
+                            <?php echo $total_reply_num['total'] ?>
+                        </strong>
+                        条回复，超过了
+                        <strong class="keyword">
+                            TODO %
+                        </strong>
+                        的洞友
                     </p>
-                    <p>
-                        蓦然回首，树洞里已处处有你的痕迹 // TODO: switch
-                    </p>
+                    <?php if ($total_reply_num['total'] > 50): ?>
+                        <p>蓦然回首，树洞里已处处有你的痕迹</p>
+                    <?php else: ?>
+                        <p>##后跳动的数字，也有你的一点一滴</p>
+                    <?php endif; ?>
                 </div>
 
                 <?php if ($highest_like_num): ?>
@@ -185,6 +189,7 @@
                 </div>
             </section>
 
+            <!-- 日期与时间 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -221,6 +226,32 @@
                 </div>
             </section>
             <?php endif; ?>
+
+            <!-- 点赞与收藏 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        这学期，你一共收获了
+                        <strong class="keyword">
+                            <?php echo $total_like['likes'] ?>
+                        </strong>
+                        次点赞！
+                    </p>
+                    <p>每一次点赞，都是一份肯定与赞美</p>
+                    <p>今后也请多多产出哦！</p>
+                </div>
+
+                <div class="segment">
+                    <p>
+                        你的帖子一共被收藏了
+                        <strong class="keyword">
+                            <?php echo $highest_fav_num['total'] ?>
+                        </strong>
+                        次
+                    </p>
+                    <p>每一颗五角星背后，都有另一个人的默默期待</p>
+                </div>
+            </section>
 
             <section class="swiper-slide">
                 <div class="segment">

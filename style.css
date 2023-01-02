@@ -32,7 +32,7 @@ blockquote {
     background-color: blue;
     border-radius: 10px;
     padding: 10px;
-    max-width: 300px;
+    width: 300px;
 }
 
 .quote-header {
