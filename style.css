@@ -1,3 +1,5 @@
+/* main style */
+
 body {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1.5em;
@@ -16,6 +18,44 @@ body {
 .keyword {
     font-weight: bolder;
     font-size: 1.5em;
+    color: cyan;
+}
+
+/* quote style */
+
+blockquote {
+    display: flex;
+    justify-content: center;
+}
+
+.quote-card {
+    background-color: blue;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 300px;
+}
+
+.quote-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: -15px;
+}
+
+.quote-icon svg {
+    width: 50px;
+    height: 40px;
+    fill: cyan;
+}
+
+.quote-id {
+    color: cyan;
+    font-size: 0.9em;
+}
+
+.quote-content {
+    overflow-y: auto;
+    height: 400px;
 }
 
 /* swiper layout config */
