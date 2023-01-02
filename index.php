@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <main class="swiper">
+    <main class="swiper" id="page-swiper">
         <div class="swiper-wrapper container">
             <!-- 用户注册信息 -->
             <section class="swiper-slide">
@@ -187,6 +187,36 @@
                     </p>
                     <p>思维的火花</p>
                     <p>在热烈的讨论中绽放</p>
+                    <p>（左右滑动查看更多回帖）</p>
+                </div>
+                <div class="segment">
+                    <div class="swiper swiper-quote" id="hole-swiper">
+                        <div class="swiper-wrapper">
+                            <?php while ($row = $most_focused_post_content->fetch_assoc()) { ?>
+                                <div class="swiper-slide">
+                                    <blockquote>
+                                        <div class="quote-card">
+                                            <div class="quote-header">
+                                                <div class="quote-id">
+                                                    ##<?php echo $row['id'] ?>
+                                                </div>
+                                                <div class="quote-icon">
+                                                    <svg>
+                                                        <use xlink:href="#quote" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="quote-content quote-fixed-content">
+                                                <md-block>
+                                                    <?php echo $row['content'] ?>
+                                                </md-block>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+                            <?php }; ?>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -209,6 +239,36 @@
                     <p>
                         这一天对你来说，是不是有什么特殊意义？
                     </p>
+                    <p>（左右滑动查看更多回帖）</p>
+                </div>
+                <div class="segment">
+                    <div class="swiper swiper-quote" id="hole-swiper">
+                        <div class="swiper-wrapper">
+                            <?php while ($row = $most_reply_day_content->fetch_assoc()) { ?>
+                                <div class="swiper-slide">
+                                    <blockquote>
+                                        <div class="quote-card">
+                                            <div class="quote-header">
+                                                <div class="quote-id">
+                                                    ##<?php echo $row['id'] ?>
+                                                </div>
+                                                <div class="quote-icon">
+                                                    <svg>
+                                                        <use xlink:href="#quote" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="quote-content quote-fixed-content">
+                                                <md-block>
+                                                    <?php echo $row['content'] ?>
+                                                </md-block>
+                                            </div>
+                                        </div>
+                                    </blockquote>
+                                </div>
+                            <?php }; ?>
+                        </div>
+                    </div>
                 </div>
             </section>
             <?php else: ?>
@@ -253,6 +313,45 @@
                     <p>每一颗五角星背后，都有另一个人的默默期待</p>
                 </div>
             </section>
+
+            <?php if ($most_mentioned and $most_mentioned['count'] > 0): ?>
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        <strong class="keyword">
+                            ##<?php echo $most_mentioned['id'] ?>
+                        </strong>
+                        是你被引用次数最多的内容，共被引用了
+                        <strong class="keyword">
+                            <?php echo $most_mentioned['count'] ?>
+                        </strong>
+                        次，还有印象吗？
+                    </p>
+                </div>
+
+                <div class="segment">
+                    <blockquote>
+                        <div class="quote-card">
+                            <div class="quote-header">
+                                <div class="quote-id">
+                                    ##<?php echo $most_mentioned['id'] ?>
+                                </div>
+                                <div class="quote-icon">
+                                    <svg>
+                                        <use xlink:href="#quote" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <md-block>
+                                    <?php echo $most_mentioned['content'] ?>
+                                </md-block>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            </section>
+            <?php endif; ?>
 
             <section class="swiper-slide">
                 <div class="segment">

@@ -58,6 +58,16 @@ blockquote {
     max-height: 17em;
 }
 
+.quote-fixed-content {
+    height: 17em;
+}
+
+.prompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* swiper layout config */
 
 html,
@@ -76,4 +86,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.swiper-quote blockquote {
+    width: 75%;
 }

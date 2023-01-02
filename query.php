@@ -13,6 +13,14 @@ function query_one($sql) {
     return $result->fetch_assoc();
 }
 
+function query($sql) {
+    global $conn, $user_id;
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $user_id);
+    $statement->execute();
+    return $statement->get_result();
+}
+
 function query_auth_one($sql) {
     global $auth_conn, $user_id;
     $statement = $auth_conn->prepare($sql);
@@ -98,6 +106,17 @@ GROUP BY hole_id
 ORDER BY reply DESC
 LIMIT 1;");
 
+$most_focused_post_content = false;
+if ($most_focused_post != false) {
+    $statement = $conn->prepare("
+    SELECT id, content
+    FROM floor
+    WHERE hole_id = ? AND user_id = ?;");
+    $statement->bind_param('ii', $most_focused_post['hole_id'], $user_id);
+    $statement->execute();
+    $most_focused_post_content = $statement->get_result();
+}
+
 $most_reply_day = query_one(
 "SELECT DATE(created_at) AS date, COUNT(*) as reply
 FROM floor
@@ -106,6 +125,18 @@ WHERE user_id = ?
 GROUP BY DATE(created_at)
 ORDER BY reply DESC
 LIMIT 1;");
+
+$most_reply_day_content = false;
+if ($most_reply_day != false) {
+    $statement = $conn->prepare("
+    SELECT id, content
+    FROM floor
+    WHERE DATE(created_at) = ?
+      AND user_id = ?;");
+    $statement->bind_param('si', $most_reply_day['date'], $user_id);
+    $statement->execute();
+    $most_reply_day_content = $statement->get_result();
+}
 
 $total_like = query_one(
 "SELECT SUM(like_data) AS likes
@@ -118,3 +149,12 @@ $total_replied_hole_num = query_one(
 FROM floor
 WHERE user_id = ?
   AND created_at BETWEEN '2022-8-28' AND '2023-01-07';");
+
+$most_mentioned = query_one(
+"SELECT floor.id, content, COUNT(floor_mention.floor_id) AS count
+FROM floor JOIN floor_mention ON floor.id = floor_mention.mention_id
+WHERE floor.user_id = ?
+  AND floor.created_at BETWEEN '2022-8-28' AND '2023-01-07'
+GROUP BY floor_mention.mention_id
+ORDER BY count DESC
+LIMIT 1;");
