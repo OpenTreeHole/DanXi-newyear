@@ -13,6 +13,24 @@ function query_one($sql) {
     return $result->fetch_assoc();
 }
 
+function query_auth_one($sql) {
+    global $auth_conn, $user_id;
+    $statement = $auth_conn->prepare($sql);
+    $statement->bind_param('i', $user_id);
+    $statement->execute();
+    $result = $statement->get_result();
+    return $result->fetch_assoc();
+}
+
+$user_info = query_auth_one(
+"SELECT DATE(joined_time) AS joined_time
+FROM user
+WHERE id = ?;");
+
+$user_register_time = new DateTimeImmutable($user_info['joined_time']);
+$user_register_diff = (new DateTime())->diff($user_register_time);
+
+
 $total_hole_num = query_one(
 "SELECT COUNT(*) AS total
 FROM hole 

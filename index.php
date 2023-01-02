@@ -29,18 +29,22 @@
                 <div class="segment">
                     <p>
                         <strong class="keyword">
-                            某年某月某日
+                            <?php echo $user_info['joined_time'] ?>
                         </strong>
                         ，你注册了旦夕。
                     </p>
                     <p>
                         至今为止，旦夕已经陪伴你走过了
                         <strong class="keyword">
-                            XXX
+                            <?php echo $user_register_diff->format('%a') ?>
                         </strong>
                         个日日夜夜~
                     </p>
-                    <p>原来你是旦夕老用户了！未来的路，让我们一起走下去喵</p>
+                    <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
+                        <p>新的一年，也请多指教喵</p>
+                    <?php else: ?>
+                        <p>原来你是旦夕老用户了！未来的路，让我们一起走下去喵</p>
+                    <?php endif; ?>
                 </div>
             </section>
 
