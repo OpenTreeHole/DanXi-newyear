@@ -17,6 +17,52 @@
 <body>
     <main class="swiper" id="page-swiper">
         <div class="swiper-wrapper container">
+            <!--首页-->
+            <section class="swiper-slide">
+                <div style="margin: auto; width: 100%;">
+                    <img id="logo" src="https://danxi.fduhole.com/assets/webhole-favicon.c6298a3d.svg">
+                    <br />
+                    <div class="segment" id="title">
+                        <b style="font-size: 25px">
+                            FDUHole年终总结报告
+                        </b>
+                        <p>
+                            2022 秋学期
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        您的用户ID是
+                        <strong class="keyword">
+                            <?php echo $user_id ?>
+                        </strong>
+                    </p>
+                </div>
+
+                <div class="segment">
+                    <p>
+                        <strong class="keyword">
+                            <?php echo $user_info['joined_time'] ?>
+                        </strong>
+                        ，你注册了FDUHole。
+                    </p>
+                    <p>
+                        至今为止，FDUHole已经陪伴你走过了
+                        <strong class="keyword">
+                            <?php echo $user_register_diff->format('%a') ?>
+                        </strong>
+                        个日日夜夜~
+                    </p>
+                    <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
+                        <p>新的一年，也请多指教喵</p>
+                    <?php else: ?>
+                        <p>原来你是FDUHole老用户了！未来的路，让我们一起走下去喵</p>
+                    <?php endif; ?>
+                </div>
+            </section>
             <!-- 用户注册信息 -->
             <section class="swiper-slide">
                 <div class="segment">
