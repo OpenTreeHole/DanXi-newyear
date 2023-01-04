@@ -21,6 +21,16 @@ body {
     color: cyan;
 }
 
+#logo {
+    display: block;
+    margin: auto;
+}
+
+#title{
+    text-align: center;
+    margin: auto;
+}
+
 /* quote style */
 
 blockquote {
