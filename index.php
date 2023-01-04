@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
-    <title>旦夕年终总结报告</title>
+    <title>FDUHole年终总结报告</title>
 </head>
 
 <body>
@@ -33,10 +33,10 @@
                         <strong class="keyword">
                             <?php echo $user_info['joined_time'] ?>
                         </strong>
-                        ，你注册了旦夕。
+                        ，你注册了FDUHole。
                     </p>
                     <p>
-                        至今为止，旦夕已经陪伴你走过了
+                        至今为止，FDUHole已经陪伴你走过了
                         <strong class="keyword">
                             <?php echo $user_register_diff->format('%a') ?>
                         </strong>
@@ -45,7 +45,7 @@
                     <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
                         <p>新的一年，也请多指教喵</p>
                     <?php else: ?>
-                        <p>原来你是旦夕老用户了！未来的路，让我们一起走下去喵</p>
+                        <p>原来你是FDUHole老用户了！未来的路，让我们一起走下去喵</p>
                     <?php endif; ?>
                 </div>
             </section>
