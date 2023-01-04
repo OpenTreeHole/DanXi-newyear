@@ -10,6 +10,7 @@ body {
 }
 
 .segment {
+    margin: auto;
     width: 75%;
     padding-left: 15px;
     padding-bottom: 15px;
