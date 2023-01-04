@@ -32,9 +32,27 @@ body {
     margin: auto;
 }
 
+@keyframes indicator_animation {
+    0% {margin-bottom: 100px;}
+    25% {margin-bottom: 120px;}
+    100% {margin-bottom: 100px;}
+}
+
+#indicator{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    font-size: 50px;
+    animation-name: indicator_animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
 /* quote style */
 
 blockquote {
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
 }
