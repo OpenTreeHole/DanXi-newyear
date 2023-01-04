@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.fduhole.com/img/icons/favicon-16x16.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
     <title>FDUHole年终总结报告</title>
@@ -31,6 +32,9 @@
                         </p>
                     </div>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
             <!-- 用户注册信息 -->
             <section class="swiper-slide">
@@ -63,6 +67,9 @@
                         <p>原来你是FDUHole老用户了！未来的路，让我们一起走下去喵</p>
                     <?php endif; ?>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
 
             <!-- 发帖信息 -->
@@ -117,6 +124,9 @@
                     <p>要不要来发个主题帖向大家 say hello 呢？</p>
                 </div>
                 <?php endif; ?>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
         
             <?php if ($total_reply_num['total'] > 0): ?>
@@ -181,6 +191,9 @@
                     <p>再接再厉哦～</p>
                 </div>
                 <?php endif; ?>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
 
             <section class="swiper-slide">
@@ -229,6 +242,9 @@
                         </div>
                     </div>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
 
             <!-- 日期与时间 -->
@@ -281,6 +297,9 @@
                         </div>
                     </div>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
             <?php else: ?>
             <section class="swiper-slide">
@@ -296,6 +315,9 @@
                     </p>
                     <p>原来传说中的潜水员就是你吗？</p>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
             <?php endif; ?>
 
@@ -323,6 +345,9 @@
                     </p>
                     <p>每一颗五角星背后，都有另一个人的默默期待</p>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
 
             <?php if ($most_mentioned and $most_mentioned['count'] > 0): ?>
@@ -361,6 +386,9 @@
                         </div>
                     </blockquote>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    expand_less
+                </span>
             </section>
             <?php endif; ?>
 
