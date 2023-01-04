@@ -117,11 +117,7 @@
                         <strong class="keyword">
                             <?php echo $total_reply_num['total'] ?>
                         </strong>
-                        条回复，超过了
-                        <strong class="keyword">
-                            TODO %
-                        </strong>
-                        的洞友
+                        条回复
                     </p>
                     <?php if ($total_reply_num['total'] > 50): ?>
                         <p>蓦然回首，树洞里已处处有你的痕迹</p>
