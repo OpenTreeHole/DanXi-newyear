@@ -32,6 +32,11 @@
                             2022 秋学期（2022.8.28 - 2023.1.7）
                         </p>
                     </div>
+
+                    <div class="segment">
+                        <p style="text-align: center">随行昼夜长短的半轮变迁</p>
+                        <p style="text-align: center">旦夕间走过秋天 等待春天</p>
+                    </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
                     chevron_left
