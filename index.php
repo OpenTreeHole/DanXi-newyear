@@ -28,7 +28,7 @@
                             FDUHole年终总结报告
                         </b>
                         <p>
-                            2022 秋学期
+                            2022 秋学期（2022.8.28 - 2023.1.7）
                         </p>
                     </div>
                 </div>
@@ -336,6 +336,20 @@
                 </div>
 
                 <div class="segment">
+                    <?php if ($total_like_others['likes'] > 0): ?>
+                    <p>
+                        同时，你给其他人点了
+                        <strong class="keyword"><?php echo $total_like_others['likes'] ?></strong>
+                        个赞！
+                    </p>
+                    <p>“我狠狠赞同了”</p>
+                    <?php else: ?>
+                    <p>本学期你还没给其他人点过赞……</p>
+                    <p>答应我，下次一定！</p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="segment">
                     <p>
                         你的帖子一共被收藏了
                         <strong class="keyword">
@@ -392,6 +406,7 @@
             </section>
             <?php endif; ?>
 
+            <?php if ($report_num['total'] > 0): ?>
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -408,6 +423,7 @@
                     <p>管理员说：感谢你的积极参与，未来也请一如既往</p>
                 </div>
             </section>
+            <?php endif; ?>
         </div>
     </main>
 

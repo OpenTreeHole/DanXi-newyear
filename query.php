@@ -144,6 +144,12 @@ FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
 WHERE floor.user_id = ?
   AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
 
+$total_like_others = query_one("
+SELECT COUNT(floor_like.floor_id) AS likes
+FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
+WHERE floor_like.user_id = ?
+AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+
 $total_replied_hole_num = query_one(
 "SELECT COUNT(DISTINCT hole_id) AS total
 FROM floor
