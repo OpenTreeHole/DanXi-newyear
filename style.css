@@ -33,9 +33,9 @@ body {
 }
 
 @keyframes indicator_animation {
-    0% {margin-bottom: 100px;}
-    25% {margin-bottom: 120px;}
-    100% {margin-bottom: 100px;}
+    0% {margin-left: 50%; margin-right: 50%;}
+    25% {margin-left: 40%; margin-right: 60%;}
+    100% {margin-left: 50%; margin-right: 50%;}
 }
 
 #indicator{

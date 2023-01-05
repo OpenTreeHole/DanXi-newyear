@@ -1,5 +1,5 @@
 var pageSwiper = new Swiper("#page-swiper", {
-    direction: "vertical",
+    direction: "horizontal",
     loop: false
 });
 
