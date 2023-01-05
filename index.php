@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>FDUHole年终总结报告</title>
 </head>
 
@@ -248,6 +249,31 @@
             </section>
 
             <!-- 日期与时间 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <?php if ($reply_count_midnight == $reply_count_time_max): ?>
+                        <p>你最喜欢在深夜发帖。万籁俱寂中，你悄然活跃于树洞的各个角落</p>
+                    <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
+                        <p>你最喜欢在上午发帖。晨光中，你的身影在闪耀</p>
+                    <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
+                        <p>你最喜欢在下午发帖。树洞陪伴着你，享受午间的阳光与温柔</p>
+                    <?php else: ?>
+                        <p>你最喜欢在夜幕降临时发帖。在这里，你放下白天的奔波苦辛，与洞友们畅聊、欢聚</p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="segment">
+                    <p id="reply-midnight" hidden><?php echo $reply_count_midnight ?></p>
+                    <p id="reply-morning" hidden><?php echo $reply_count_morning ?></p>
+                    <p id="reply-afternoon" hidden><?php echo $reply_count_afternoon ?></p>
+                    <p id="reply-evening" hidden><?php echo $reply_count_evening ?></p>
+                    <canvas id="reply-time-chart"></canvas>
+                </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+            </section>
+
             <section class="swiper-slide">
                 <div class="segment">
                     <p>

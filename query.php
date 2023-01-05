@@ -118,11 +118,11 @@ if ($most_focused_post != false) {
 }
 
 $most_reply_day = query_one(
-"SELECT DATE(created_at) AS date, COUNT(*) as reply
+"SELECT DATE(DATE_ADD(created_at, INTERVAL 8 HOUR)) AS date, COUNT(*) as reply
 FROM floor
 WHERE user_id = ?
   AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
-GROUP BY DATE(created_at)
+GROUP BY date
 ORDER BY reply DESC
 LIMIT 1;");
 
@@ -131,7 +131,7 @@ if ($most_reply_day != false) {
     $statement = $conn->prepare("
     SELECT id, content
     FROM floor
-    WHERE DATE(created_at) = ?
+    WHERE DATE(DATE_ADD(created_at, INTERVAL 8 HOUR)) = ?
       AND user_id = ?;");
     $statement->bind_param('si', $most_reply_day['date'], $user_id);
     $statement->execute();
@@ -164,3 +164,21 @@ WHERE floor.user_id = ?
 GROUP BY floor_mention.mention_id
 ORDER BY count DESC
 LIMIT 1;");
+
+function query_reply_count_time($begin, $end) {
+    global $conn, $user_id;
+    $statement = $conn->prepare("SELECT COUNT(id) AS total
+                                        FROM floor
+                                        WHERE user_id = ?
+                                        AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN ? AND ?;");
+    $statement->bind_param('iss', $user_id, $begin, $end);
+    $statement->execute();
+    $result = $statement->get_result();
+    return $result->fetch_assoc()['total'];
+}
+
+$reply_count_midnight = query_reply_count_time('00:00:00', '05:59:59');
+$reply_count_morning = query_reply_count_time('06:00:00', '11:59:59');
+$reply_count_afternoon = query_reply_count_time('12:00:00', '17:59:59');
+$reply_count_evening = query_reply_count_time('18:00:00', '23:59:59');
+$reply_count_time_max = max($reply_count_midnight, $reply_count_morning, $reply_count_afternoon, $reply_count_evening);
