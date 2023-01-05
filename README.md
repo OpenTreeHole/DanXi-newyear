@@ -5,13 +5,13 @@
 请在团队内向相关人员索取测试服访问凭据，替换下方内容。
 ```shell
 export DB_HOST=xxx DB_USER=xxx DB_PASSWORD=xxx
-php -S localhost:8080
+php -S 0.0.0.0:8080
 ```
 
 ## 说明
 
 ### 待完成的工作
-- [ ] 调整背景图片、颜色设计
+- [x] 调整背景图片、颜色设计
 - [ ] 增加封面、封底页面
 - [ ] 增加分享功能
 
@@ -42,3 +42,5 @@ Swiper 样式。
 滑动翻页效果使用了 [SwiperJS](https://swiperjs.com) 库，可以参考 [官方示例](https://swiperjs.com/demos)。
 
 Markdown 渲染使用了 [md-block](https://md-block.verou.me)，页面中的 `md-block` 标签即为 Markdown 内容。
+
+饼图使用了 [ChartJS](https://www.chartjs.org)，参考 [文档说明](https://www.chartjs.org/docs/latest/charts/doughnut.html)。
