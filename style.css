@@ -6,7 +6,8 @@ body {
     margin: 0;
     padding: 0;
     color: white;
-    background-color: darkblue;
+    background-image: url("background.svg");
+    background-size: 100% auto;
 }
 
 .segment {
@@ -27,18 +28,27 @@ body {
     margin: auto;
 }
 
-#title{
+#title {
     text-align: center;
     margin: auto;
 }
 
 @keyframes indicator_animation {
-    0% {margin-left: 50%; margin-right: 50%;}
-    25% {margin-left: 40%; margin-right: 60%;}
-    100% {margin-left: 50%; margin-right: 50%;}
+    0% {
+        margin-left: 50%;
+        margin-right: 50%;
+    }
+    25% {
+        margin-left: 40%;
+        margin-right: 60%;
+    }
+    100% {
+        margin-left: 50%;
+        margin-right: 50%;
+    }
 }
 
-#indicator{
+#indicator {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
@@ -58,7 +68,9 @@ blockquote {
 }
 
 .quote-card {
-    background-color: blue;
+    background-color: rgba(211, 211, 211, 0.3);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     border-radius: 10px;
     padding: 10px;
     width: 300px;
@@ -74,11 +86,11 @@ blockquote {
 .quote-icon svg {
     width: 2em;
     height: 2em;
-    fill: cyan;
+    fill: rgba(255, 255, 255, 0.4);
 }
 
 .quote-id {
-    color: cyan;
+    color: rgba(255, 255, 255, 0.4);;
     font-size: 0.9em;
 }
 
