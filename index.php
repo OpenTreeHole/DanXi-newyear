@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
+</style>
     <title>FDUHole年终总结报告</title>
 </head>
 
@@ -33,7 +34,7 @@
                     </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
             <!-- 用户注册信息 -->
@@ -68,7 +69,7 @@
                     <?php endif; ?>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
 
@@ -125,7 +126,7 @@
                 </div>
                 <?php endif; ?>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
         
@@ -192,7 +193,7 @@
                 </div>
                 <?php endif; ?>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
 
@@ -243,7 +244,7 @@
                     </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
 
@@ -298,7 +299,7 @@
                     </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
             <?php else: ?>
@@ -316,7 +317,7 @@
                     <p>原来传说中的潜水员就是你吗？</p>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
             <?php endif; ?>
@@ -346,7 +347,7 @@
                     <p>每一颗五角星背后，都有另一个人的默默期待</p>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
 
@@ -387,7 +388,7 @@
                     </blockquote>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
-                    expand_less
+                    chevron_left
                 </span>
             </section>
             <?php endif; ?>
