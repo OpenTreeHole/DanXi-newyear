@@ -170,7 +170,8 @@ function query_reply_count_time($begin, $end) {
     $statement = $conn->prepare("SELECT COUNT(id) AS total
                                         FROM floor
                                         WHERE user_id = ?
-                                        AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN ? AND ?;");
+                                          AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+                                          AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN ? AND ?;");
     $statement->bind_param('iss', $user_id, $begin, $end);
     $statement->execute();
     $result = $statement->get_result();
@@ -182,3 +183,14 @@ $reply_count_morning = query_reply_count_time('06:00:00', '11:59:59');
 $reply_count_afternoon = query_reply_count_time('12:00:00', '17:59:59');
 $reply_count_evening = query_reply_count_time('18:00:00', '23:59:59');
 $reply_count_time_max = max($reply_count_midnight, $reply_count_morning, $reply_count_afternoon, $reply_count_evening);
+
+$latest_post = query_one(
+"SELECT DATE(DATE_ADD(created_at, INTERVAL 8 HOUR)) AS date,
+       TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) AS time,
+       id, content
+FROM floor
+WHERE user_id = ?
+  AND DATE_ADD(created_at, INTERVAL 8 HOUR) BETWEEN '2022-6-26' AND '2023-01-07'
+  AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN '00:00:00' AND '05:00:00'
+ORDER BY TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) DESC
+LIMIT 1;");

@@ -197,6 +197,7 @@
                 </span>
             </section>
 
+            <!-- 最关注的洞 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -248,32 +249,7 @@
                 </span>
             </section>
 
-            <!-- 日期与时间 -->
-            <section class="swiper-slide">
-                <div class="segment">
-                    <?php if ($reply_count_midnight == $reply_count_time_max): ?>
-                        <p>你最喜欢在深夜发帖。万籁俱寂中，你悄然活跃于树洞的各个角落</p>
-                    <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
-                        <p>你最喜欢在上午发帖。晨光中，你的身影在闪耀</p>
-                    <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
-                        <p>你最喜欢在下午发帖。树洞陪伴着你，享受午间的阳光与温柔</p>
-                    <?php else: ?>
-                        <p>你最喜欢在夜幕降临时发帖。在这里，你放下白天的奔波苦辛，与洞友们畅聊、欢聚</p>
-                    <?php endif; ?>
-                </div>
-
-                <div class="segment">
-                    <p id="reply-midnight" hidden><?php echo $reply_count_midnight ?></p>
-                    <p id="reply-morning" hidden><?php echo $reply_count_morning ?></p>
-                    <p id="reply-afternoon" hidden><?php echo $reply_count_afternoon ?></p>
-                    <p id="reply-evening" hidden><?php echo $reply_count_evening ?></p>
-                    <canvas id="reply-time-chart"></canvas>
-                </div>
-                <span class="material-symbols-outlined" id="indicator">
-                    chevron_left
-                </span>
-            </section>
-
+            <!-- 发帖最多的日期 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -324,9 +300,89 @@
                     </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
+                chevron_left
+            </span>
+            </section>
+
+            <!-- 发帖时间分布 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <?php if ($reply_count_midnight == $reply_count_time_max): ?>
+                        <p>你最喜欢在<span class="keyword">深夜</span>发帖。万籁俱寂中，你悄然活跃于树洞的各个角落</p>
+                    <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
+                        <p>你最喜欢在<span class="keyword">上午</span>发帖。晨光中，你的身影在闪耀</p>
+                    <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
+                        <p>你最喜欢在<span class="keyword">下午</span>发帖。树洞陪伴着你，享受午间的阳光与温柔</p>
+                    <?php else: ?>
+                        <p>你最喜欢在<span class="keyword">夜幕降临</span>时发帖。在这里，你放下白天的奔波苦辛，与洞友们畅聊、欢聚</p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="segment">
+                    <p id="reply-midnight" hidden><?php echo $reply_count_midnight ?></p>
+                    <p id="reply-morning" hidden><?php echo $reply_count_morning ?></p>
+                    <p id="reply-afternoon" hidden><?php echo $reply_count_afternoon ?></p>
+                    <p id="reply-evening" hidden><?php echo $reply_count_evening ?></p>
+                    <canvas id="reply-time-chart"></canvas>
+                </div>
+                <span class="material-symbols-outlined" id="indicator">
                     chevron_left
                 </span>
             </section>
+
+            <?php if ($latest_post): ?>
+            <!-- 最晚的发帖 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        <strong class="keyword">
+                            <?php echo $latest_post['date'] ?>
+                        </strong>
+                        这一天，你在树洞流连到很晚
+                    </p>
+
+                    <p>
+                        <strong class="keyword">
+                            <?php
+                            $latest_post_time = new DateTimeImmutable($latest_post['time']);
+                            echo $latest_post_time->format('H:i');
+                            ?>
+                        </strong>
+                        ，你还发了新帖
+                        <strong class="keyword">
+                            ##<?php echo $latest_post['id'] ?>
+                        </strong>
+                    </p>
+                </div>
+
+                <div class="segment">
+                    <blockquote>
+                        <div class="quote-card">
+                            <div class="quote-header">
+                                <div class="quote-id">
+                                    ##<?php echo $latest_post['id'] ?>
+                                </div>
+                                <div class="quote-icon">
+                                    <svg>
+                                        <use xlink:href="#quote" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="quote-content">
+                                <md-block>
+                                    <?php echo $latest_post['content'] ?>
+                                </md-block>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+            </section>
+            <?php endif; ?>
+
             <?php else: ?>
             <section class="swiper-slide">
                 <div class="segment">
