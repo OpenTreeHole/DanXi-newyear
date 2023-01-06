@@ -22,7 +22,7 @@
             <!--首页-->
             <section class="swiper-slide">
                 <div style="margin: auto; width: 100%;">
-                    <img id="logo" src="https://danxi.fduhole.com/assets/webhole-favicon.c6298a3d.svg">
+                    <img id="logo" style="width: 240px; height: auto;" src="./treehole.svg">
                     <br />
                     <div class="segment" id="title">
                         <b style="font-size: 25px">
