@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>FDUHole年终总结报告</title>
+    <title>FDUHole学期总结报告</title>
 </head>
 
 <body>
@@ -391,6 +391,7 @@
             <?php endif; ?>
 
             <?php else: ?>
+            <!-- 没有发帖 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -454,6 +455,7 @@
             </section>
 
             <?php if ($most_mentioned and $most_mentioned['count'] > 0): ?>
+            <!-- 被引用最多的帖子 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -496,6 +498,7 @@
             <?php endif; ?>
 
             <?php if ($report_num['total'] > 0): ?>
+            <!-- 举报 -->
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
@@ -511,8 +514,92 @@
                     </p>
                     <p>管理员说：感谢你的积极参与，未来也请一如既往</p>
                 </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
             </section>
             <?php endif; ?>
+
+            <!-- 结语 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>没有一个声音无人听见，</p>
+                    <p>没有一句话语不曾洞见真心。</p>
+                    <p>谨以此纪念过去的半年，</p>
+                    <p>并期待繁花盛开的春天。</p>
+                </div>
+
+                <div class="segment">
+                    <p>滑动翻开你的专属报告……</p>
+                </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+            </section>
+
+            <!-- 个人专属报告 -->
+            <section class="swiper-slide">
+                <div id="report-card">
+                    <p id="report-title">
+                        我与旦夕的2022秋季学期
+                    </p>
+
+                    <ul>
+                        <li>发帖：<?php echo $total_hole_num['total'] ?></li>
+                        <li>回复：<?php echo $total_reply_num['total'] ?></li>
+                        <li>点赞：<?php echo $total_like_others['likes'] ?></li>
+                        <li>被赞：<?php echo $total_like['likes'] ?></li>
+                        <li>被收藏：<?php echo $highest_fav_num['total'] ?></li>
+                        <li>回帖最多的日子：<?php echo $most_reply_day['date'] ?></li>
+                    </ul>
+
+                    <p id="report-tags">
+                        <span class="special-tag">
+                            <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
+                                初来乍到请多指教
+                            <?php else: ?>
+                                树洞老玩家
+                            <?php endif; ?>
+                        </span>
+
+                        <span class="special-tag">
+                            <?php if ($total_reply_num['total'] > 50): ?>
+                                树洞大水怪
+                            <?php elseif ($total_reply_num['total'] > 0): ?>
+                                冲浪爱好者
+                            <?php else: ?>
+                                潜水艇
+                            <?php endif; ?>
+                        </span>
+
+                        <?php if ($total_like_others['likes'] > 0): ?>
+                            <span class="special-tag">独具慧眼</span>
+                        <?php endif; ?>
+
+                        <?php if ($total_like['likes'] > 0): ?>
+                            <span class="special-tag">被对上了电波</span>
+                        <?php endif; ?>
+
+                        <?php if ($total_reply_num['total'] > 0): ?>
+                            <span class="special-tag">
+                                <?php if ($reply_count_midnight == $reply_count_time_max): ?>
+                                    凌晨三点我睁开了眼
+                                <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
+                                    早起的鸟儿有树洞看
+                                <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
+                                    在夕阳西下时造访旦夕
+                                <?php else: ?>
+                                    和夜幕一起降临
+                                <?php endif; ?>
+                            </span>
+                        <?php endif; ?>
+
+                        <?php if ($report_num['total'] > 0): ?>
+                            <span class="special-tag">参与社区管理</span>
+                        <?php endif; ?>
+                    </p>
+                </div>
+            </section>
         </div>
     </main>
 
