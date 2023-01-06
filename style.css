@@ -109,6 +109,22 @@ blockquote {
     justify-content: center;
 }
 
+#pie-chart-container {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pie-chart {
+    background-color: rgba(211, 211, 211, 0.3);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 270px;
+}
+
 /* swiper layout config */
 
 html,

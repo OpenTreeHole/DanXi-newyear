@@ -323,12 +323,14 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="segment">
-                    <p id="reply-midnight" hidden><?php echo $reply_count_midnight ?></p>
-                    <p id="reply-morning" hidden><?php echo $reply_count_morning ?></p>
-                    <p id="reply-afternoon" hidden><?php echo $reply_count_afternoon ?></p>
-                    <p id="reply-evening" hidden><?php echo $reply_count_evening ?></p>
-                    <canvas id="reply-time-chart"></canvas>
+                <div id="pie-chart-container">
+                    <div id="pie-chart">
+                        <canvas id="reply-time-chart"></canvas>
+                        <p id="reply-midnight" hidden><?php echo $reply_count_midnight ?></p>
+                        <p id="reply-morning" hidden><?php echo $reply_count_morning ?></p>
+                        <p id="reply-afternoon" hidden><?php echo $reply_count_afternoon ?></p>
+                        <p id="reply-evening" hidden><?php echo $reply_count_evening ?></p>
+                    </div>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
                     chevron_left

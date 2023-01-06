@@ -36,17 +36,19 @@ new Chart(ctx, {
                 document.getElementById('reply-evening').innerHTML
             ],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(54, 235, 141)'
+                '#ADA2FF',
+                '#FFF8E1',
+                '#FFE5F1',
+                '#C0DEFF'
             ],
-            hoverOffset: 4
+            hoverOffset: 4,
+            borderWidth: 0
         }]
     },
     options: {
         plugins: {
             legend: {
+                maxWidth: 200,
                 labels: {
                     color: '#FFF'
                 }
