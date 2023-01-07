@@ -2,18 +2,9 @@
 
 ## 运行
 
-请在团队内向相关人员索取测试服访问凭据，替换下方内容。
-```shell
-export DB_HOST=xxx DB_USER=xxx DB_PASSWORD=xxx
-php -S 0.0.0.0:8080
-```
+在运行 Docker 镜像时需要使用 `-e` 参数设置环境变量：`DB_HOST, DB_USER, DB_PASSWORD`。
 
 ## 说明
-
-### 待完成的工作
-- [x] 调整背景图片、颜色设计
-- [ ] 增加封面、封底页面
-- [ ] 增加分享功能
 
 ### PHP 代码
 

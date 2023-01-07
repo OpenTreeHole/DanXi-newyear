@@ -2,7 +2,13 @@
 
 require 'connect_db.php';
 
-$user_id = intval($_GET['user']); // $_SERVER['HTTP_X_CONSUMER_USERNAME']
+if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER)) { // not authorized
+    // TODO: use actual production url
+    header('Location: https://auth.fduhole.com/login?url=todo', true, 302); // redirect to login page
+    exit;
+}
+
+$user_id = intval($_SERVER['HTTP_X_CONSUMER_USERNAME']);
 
 function query_one($sql) {
     global $conn, $user_id;
