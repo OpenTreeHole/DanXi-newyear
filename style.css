@@ -7,7 +7,9 @@ body {
     padding: 0;
     color: white;
     background-image: url("background.svg");
-    background-size: 100% auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .segment {
@@ -20,7 +22,7 @@ body {
 .keyword {
     font-weight: bolder;
     font-size: 1.5em;
-    color: cyan;
+    color: rgb(237, 223, 129);
 }
 
 #logo {

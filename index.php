@@ -29,7 +29,7 @@
                             FDUHole年终总结报告
                         </b>
                         <p>
-                            2022 秋学期（2022.8.28 - 2023.1.7）
+                            2022 秋学期<br/>（2022.8.28 - 2023.1.7）
                         </p>
                     </div>
 
@@ -42,6 +42,7 @@
                     chevron_left
                 </span>
             </section>
+
             <!-- 用户注册信息 -->
             <section class="swiper-slide">
                 <div class="segment">

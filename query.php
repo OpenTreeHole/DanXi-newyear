@@ -2,7 +2,7 @@
 
 require 'connect_db.php';
 
-$user_id = intval($_GET['user']);
+$user_id = intval($_GET['user']); // $_SERVER['HTTP_X_CONSUMER_USERNAME']
 
 function query_one($sql) {
     global $conn, $user_id;
