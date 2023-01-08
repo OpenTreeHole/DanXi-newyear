@@ -134,6 +134,15 @@ blockquote {
     max-height: 17em;
 }
 
+.quote-content img {
+    width: 180px;
+    height: auto
+}
+
+.quote-content pre {
+    width: 100%;
+}
+
 .quote-fixed-content {
     height: 17em;
 }
