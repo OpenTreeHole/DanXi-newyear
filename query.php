@@ -108,6 +108,7 @@ $most_focused_post = query_one(
 FROM floor
 WHERE user_id = ?
   AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND NOT deleted
 GROUP BY hole_id
 ORDER BY reply DESC
 LIMIT 1;");
@@ -117,7 +118,7 @@ if ($most_focused_post != false) {
     $statement = $conn->prepare("
     SELECT id, content
     FROM floor
-    WHERE hole_id = ? AND user_id = ?;");
+    WHERE hole_id = ? AND user_id = ? AND NOT deleted;");
     $statement->bind_param('ii', $most_focused_post['hole_id'], $user_id);
     $statement->execute();
     $most_focused_post_content = $statement->get_result();
@@ -128,6 +129,7 @@ $most_reply_day = query_one(
 FROM floor
 WHERE user_id = ?
   AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND NOT deleted
 GROUP BY date
 ORDER BY reply DESC
 LIMIT 1;");
@@ -138,6 +140,7 @@ if ($most_reply_day != false) {
     SELECT id, content
     FROM floor
     WHERE DATE(DATE_ADD(created_at, INTERVAL 8 HOUR)) = ?
+      AND NOT deleted
       AND user_id = ?;");
     $statement->bind_param('si', $most_reply_day['date'], $user_id);
     $statement->execute();

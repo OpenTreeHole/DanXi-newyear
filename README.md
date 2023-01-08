@@ -2,7 +2,10 @@
 
 ## 运行
 
-在运行 Docker 镜像时需要使用 `-e` 参数设置环境变量：`DB_HOST, DB_USER, DB_PASSWORD, AUTH_URL`。
+在运行 Docker 镜像时需要使用 `-e` 或 `--env-file` 参数设置环境变量：
+- 树洞数据库凭据：`DB_HOST, DB_USER, DB_PASSWORD`
+- 用户数据库凭据：`AUTH_DB_HOST, AUTH_DB_USER, AUTH_DB_PASSWORD`
+- 登录跳转 URL：`AUTH_URL`，格式为 `https://auth.fduhole.com/login?url=[URL Encoded Deploy Site URL]`
 
 ## 说明
 
