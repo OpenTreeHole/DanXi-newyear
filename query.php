@@ -2,7 +2,8 @@
 
 require 'connect_db.php';
 
-if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER)) { // not authorized
+if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER) ||
+    (array_key_exists('HTTP_X_ANONYMOUS_CONSUMER', $_SERVER) && $_SERVER['HTTP_X_ANONYMOUS_CONSUMER'] == 'true')) { // not authorized
     header('Location: ' . getenv('AUTH_URL'), true, 302); // redirect to login page
     exit;
 }
