@@ -3,8 +3,7 @@
 require 'connect_db.php';
 
 if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER)) { // not authorized
-    // TODO: use actual production url
-    header('Location: https://auth.fduhole.com/login?url=todo', true, 302); // redirect to login page
+    header('Location: ' . getenv('AUTH_URL'), true, 302); // redirect to login page
     exit;
 }
 

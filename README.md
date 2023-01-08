@@ -2,7 +2,7 @@
 
 ## 运行
 
-在运行 Docker 镜像时需要使用 `-e` 参数设置环境变量：`DB_HOST, DB_USER, DB_PASSWORD`。
+在运行 Docker 镜像时需要使用 `-e` 参数设置环境变量：`DB_HOST, DB_USER, DB_PASSWORD, AUTH_URL`。
 
 ## 说明
 
