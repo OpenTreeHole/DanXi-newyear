@@ -35,6 +35,29 @@ body {
     margin: auto;
 }
 
+/* font */
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./icon_font.ttf) format('truetype');
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
 @keyframes indicator_animation {
     0% {
         margin-left: 50%;
@@ -146,6 +169,8 @@ blockquote {
 .quote-fixed-content {
     height: 17em;
 }
+
+/* final page */
 
 .prompt {
     display: flex;

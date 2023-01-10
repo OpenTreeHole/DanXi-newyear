@@ -10,5 +10,6 @@ COPY style.css style.css
 COPY swiper.js swiper.js
 COPY treehole.svg treehole.svg
 COPY background.svg background.svg
+COPY icon_font.ttf icon_font.ttf
 
 EXPOSE 80
