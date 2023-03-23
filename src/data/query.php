@@ -2,13 +2,16 @@
 
 require 'connect_db.php';
 
-if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER) ||
-    (array_key_exists('HTTP_X_ANONYMOUS_CONSUMER', $_SERVER) && $_SERVER['HTTP_X_ANONYMOUS_CONSUMER'] == 'true')) { // not authorized
-    header('Location: ' . getenv('AUTH_URL'), true, 302); // redirect to login page
-    exit;
+if (getenv("MODE") == "PRODUCTION") {
+    if (!array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER) ||
+        (array_key_exists('HTTP_X_ANONYMOUS_CONSUMER', $_SERVER) && $_SERVER['HTTP_X_ANONYMOUS_CONSUMER'] == 'true')) { // not authorized
+        header('Location: ' . getenv('AUTH_URL'), true, 302); // redirect to login page
+        exit;
+    }
+    $user_id = intval($_SERVER['HTTP_X_CONSUMER_USERNAME']);
+} else {
+    $user_id = $_GET["user"];
 }
-
-$user_id = intval($_SERVER['HTTP_X_CONSUMER_USERNAME']);
 
 function query_one($sql)
 {
@@ -18,15 +21,6 @@ function query_one($sql)
     $statement->execute();
     $result = $statement->get_result();
     return $result->fetch_assoc();
-}
-
-function query($sql)
-{
-    global $conn, $user_id;
-    $statement = $conn->prepare($sql);
-    $statement->bind_param('i', $user_id);
-    $statement->execute();
-    return $statement->get_result();
 }
 
 function query_auth_one($sql)
