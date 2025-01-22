@@ -88,18 +88,26 @@
                         <strong class="keyword">
                             <?php echo $total_hole_num['total'] ?>
                         </strong>
-                        个主题贴
+                        个主题贴，使用
+                        <strong class="keyword">
+                            <?php echo $most_often_used_tag['name'] ?>
+                        </strong>
+                        tag 的帖子高达
+                        <strong class="keyword">
+                            <?php echo $most_often_used_tag['tag_num'] ?>
+                        </strong>
+                        个
                     </p>
                     <p>
                         其中，
                         <strong class="keyword">
-                            #<?php echo $highest_reply_hole['id'] ?>
+                            #<?php echo $highest_reply_hole['hole_id'] ?>
                         </strong>
                         得到了
                         <strong class="keyword">
                             <?php echo $highest_reply_hole['reply'] ?>
                         </strong>
-                        条回复，是其中讨论最热烈的主题帖！
+                        条回复，是讨论最热烈的主题帖！
                     </p>
                 </div>
 
@@ -108,7 +116,7 @@
                         <div class="quote-card">
                             <div class="quote-header">
                                 <div class="quote-id">
-                                    #<?php echo $highest_reply_hole['id'] ?>
+                                    #<?php echo $highest_reply_hole['hole_id'] ?>
                                 </div>
                                 <div class="quote-icon">
                                     <svg>
@@ -172,7 +180,10 @@
                         <strong class="keyword">
                             <?php echo $total_reply_num['total'] ?>
                         </strong>
-                        条回复
+                        条回复，你最常回复的 tag 是
+                        <strong class="keyword">
+                            <?php echo $most_often_replied_tag['name'] ?>
+                        </strong>
                     </p>
                     <?php if ($total_reply_num['total'] > 50): ?>
                         <p>蓦然回首，茶楼里已处处有你的痕迹</p>
@@ -475,7 +486,11 @@
                 <p>
                     你的帖子一共被收藏了
                     <strong class="keyword">
-                        <?php echo $highest_fav_num['total'] ?>
+                        <?php echo $my_posts_favorited_count['total'] ?>
+                    </strong>
+                    次，被订阅了
+                    <strong class="keyword">
+                        <?php echo $my_posts_subscribed_count['total'] ?>
                     </strong>
                     次
                 </p>
@@ -522,6 +537,34 @@
                             </div>
                         </div>
                     </blockquote>
+                </div>
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+            </section>
+        <?php endif; ?>
+
+        <?php if ($most_replied_anonyname_in_a_hole and $most_replied_anonyname_in_a_hole['reply_times'] > 0): ?>
+            <!-- 最常互动的匿名用户 -->
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        或许，你还记得与这个用户
+                        <strong class="keyword">
+                            <?php echo $most_replied_anonyname_in_a_hole['anonyname'] ?>
+                        </strong>
+                        的对话吗？ta 在你的帖子
+                        <strong class="keyword">
+                            #<?php echo $most_replied_anonyname_in_a_hole['hole_id'] ?>
+                        </strong>
+                        中留下了
+                        <strong class="keyword">
+                            <?php echo $most_replied_anonyname_in_a_hole['reply_times'] ?>
+                        </strong>
+                        条回复
+                        <br>
+                        无论是温暖的互动，还是激烈的辩论，你们都为彼此留下了宝贵的记忆
+                    </p>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
                     chevron_left
@@ -581,7 +624,10 @@
                     <li>回复：<?php echo $total_reply_num['total'] ?></li>
                     <li>点赞：<?php echo $total_like_others['likes'] ?></li>
                     <li>被赞：<?php echo $total_like['likes'] ?></li>
-                    <li>被收藏：<?php echo $highest_fav_num['total'] ?></li>
+                    <li>收藏：<?php echo $my_favorites_count['total'] ?></li>
+                    <li>被收藏：<?php echo $my_posts_favorited_count['total'] ?></li>
+                    <li>订阅：<?php echo $my_subscription_count['total'] ?></li>
+                    <li>被订阅：<?php echo $my_posts_subscribed_count['total'] ?></li>
                     <li>回帖最多的日子：<?php echo $most_reply_day['date'] ?></li>
                 </ul>
 
