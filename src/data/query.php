@@ -66,17 +66,24 @@ WHERE user_id = ?
   AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;");
 
 $highest_reply_hole = query_one(
-    "SELECT hole_id, MAX(ranking) AS reply, content
-FROM floor
-WHERE hole_id IN (
-    SELECT id
-    FROM hole
-    WHERE user_id = ?
-      AND deleted_at IS NULL
-      AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
-)
-GROUP BY hole_id
-ORDER BY reply DESC LIMIT 1;");
+    "WITH max_reply_hole AS (
+        SELECT hole_id, MAX(ranking) AS reply
+        FROM floor
+        WHERE hole_id IN (
+            SELECT id
+            FROM hole
+            WHERE user_id = ?
+              AND deleted_at IS NULL
+              AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+        )
+        GROUP BY hole_id
+        ORDER BY reply DESC
+        LIMIT 1
+    )
+    SELECT f.content, f.hole_id, mrh.reply
+    FROM floor f
+            JOIN max_reply_hole mrh ON f.hole_id = mrh.hole_id
+    ORDER BY f.id LIMIT 1;");
 
 $total_reply_num = query_one(
     "SELECT COUNT(*) AS total
