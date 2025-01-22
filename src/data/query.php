@@ -33,6 +33,16 @@ function query_auth_one($sql)
     return $result->fetch_assoc();
 }
 
+function query_danke_one($sql)
+{
+    global $danke_conn, $user_id;
+    $statement = $danke_conn->prepare($sql);
+    $statement->bind_param('i', $user_id);
+    $statement->execute();
+    $result = $statement->get_result();
+    return $result->fetch_assoc();
+}
+
 $user_info = query_auth_one(
     "SELECT DATE(joined_time) AS joined_time
 FROM user
@@ -86,7 +96,7 @@ GROUP BY floor_id
 ORDER BY likes DESC
 LIMIT 1;");
 
-$total_review_num = query_one(
+$total_review_num = query_danke_one(
   "SELECT count(*) AS review_count 
   FROM review WHERE reviewer_id = ?
   AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' limit 1;");
