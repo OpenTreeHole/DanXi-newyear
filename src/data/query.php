@@ -97,12 +97,12 @@ ORDER BY likes DESC
 LIMIT 1;");
 
 $total_review_num = query_danke_one(
-  "SELECT count(*) AS review_count 
+  "SELECT count(*) AS total 
   FROM review WHERE reviewer_id = ?
   AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' limit 1;");
 
 $total_sticker_num = query_one(
-  "SELECT SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_')) AS total_emoji_count
+  "SELECT SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_')) AS total
   FROM floor
   WHERE user_id = ? AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' limit 1;");
 
