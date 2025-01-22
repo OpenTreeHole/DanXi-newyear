@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>FDUHole学期总结报告</title>
+    <title>茶楼学期总结报告</title>
 </head>
 
 <body>
@@ -23,20 +23,19 @@
         <!--首页-->
         <section class="swiper-slide">
             <div style="margin: auto; width: 100%;">
-                <img id="logo" style="width: 240px; height: auto;" src="./assets/treehole.svg" alt="旦夕图标">
                 <br/>
                 <div class="segment" id="title">
                     <b style="font-size: 25px">
-                        FDUHole年终总结报告
+                        茶楼年终总结报告
                     </b>
                     <p>
-                        2022 秋学期<br/>（2022.8.28 - 2023.1.7）
+                        2024 秋学期<br/>（2024.6.30 - 2025.1.4）
                     </p>
                 </div>
 
                 <div class="segment">
                     <p style="text-align: center">随行昼夜长短的半轮变迁</p>
-                    <p style="text-align: center">旦夕间走过秋天 等待春天</p>
+                    <p style="text-align: center">旦挞和你一起走过夏秋 来到冬天 等待春天</p>
                 </div>
             </div>
             <span class="material-symbols-outlined" id="indicator">
@@ -60,10 +59,10 @@
                     <strong class="keyword">
                         <?php echo $user_info['joined_time'] ?>
                     </strong>
-                    ，你注册了FDUHole。
+                    ，你注册了旦挞。
                 </p>
                 <p>
-                    至今为止，FDUHole已经陪伴你走过了
+                    至今为止，旦挞已经陪伴你走过了
                     <strong class="keyword">
                         <?php echo $user_register_diff->format('%a') ?>
                     </strong>
@@ -72,7 +71,7 @@
                 <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
                     <p>新的一年，也请多指教喵</p>
                 <?php else: ?>
-                    <p>原来你是FDUHole老用户了！未来的路，让我们一起走下去喵</p>
+                    <p>原来你是老茶友了！未来的路，让我们一起走下去喵</p>
                 <?php endif; ?>
             </div>
             <span class="material-symbols-outlined" id="indicator">
@@ -89,7 +88,7 @@
                         <strong class="keyword">
                             <?php echo $total_hole_num['total'] ?>
                         </strong>
-                        个洞
+                        个主题贴
                     </p>
                     <p>
                         其中，
@@ -128,8 +127,31 @@
 
             <?php else: ?>
                 <div class="segment">
-                    <p>本学期的你在树洞默默潜水</p>
+                    <p>本学期的你在茶楼默默潜水</p>
                     <p>要不要来发个主题帖向大家 say hello 呢？</p>
+                </div>
+            <?php endif; ?>
+            <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+        </section>
+
+        <section class="swiper-slide">
+            <?php if ($total_review_num['total'] > 0): ?>
+                <div class="segment">
+                    <p>
+                        在蛋壳，本学期的你一共创建了
+                        <strong class="keyword">
+                            <?php echo $total_review_num['total'] ?>
+                        </strong>
+                        条课评
+                    </p>
+                    <p>你的月旦雅评，帮助选课的同学不再迷茫</p>
+                </div>
+
+            <?php else: ?>
+                <div class="segment">
+                    <p>赠人课评，手有余香，蛋壳期待你的课程体验分享</p>
                 </div>
             <?php endif; ?>
             <span class="material-symbols-outlined" id="indicator">
@@ -146,17 +168,24 @@
                         <strong class="keyword">
                             <?php echo $total_replied_hole_num['total'] ?>
                         </strong>
-                        个洞里留下了自己的足迹，一共做出了
+                        个帖里留下了自己的足迹，一共做出了
                         <strong class="keyword">
                             <?php echo $total_reply_num['total'] ?>
                         </strong>
                         条回复
                     </p>
                     <?php if ($total_reply_num['total'] > 50): ?>
-                        <p>蓦然回首，树洞里已处处有你的痕迹</p>
+                        <p>蓦然回首，茶楼里已处处有你的痕迹</p>
                     <?php else: ?>
                         <p>##后跳动的数字，也有你的一点一滴</p>
                     <?php endif; ?>
+                    <p>2024年，茶楼上线表情包功能</p>
+                    <p>半年来，
+                        <strong class="keyword">
+                            <?php echo $total_sticker_num['total'] ?>
+                        </strong>
+                        只可爱猫猫出现在你的回复中
+                    </p>
                 </div>
 
                 <?php if ($highest_like_num): ?>
@@ -208,7 +237,7 @@
             <section class="swiper-slide">
                 <div class="segment">
                     <p>
-                        你最关注的洞是
+                        你最关注的帖是
                         <strong class="keyword">
                             #<?php echo $most_focused_post['hole_id'] ?>
                         </strong>
@@ -315,13 +344,13 @@
             <section class="swiper-slide">
                 <div class="segment">
                     <?php if ($reply_count_midnight == $reply_count_time_max): ?>
-                        <p>你最喜欢在<span class="keyword">深夜</span>发帖。万籁俱寂中，你悄然活跃于树洞的各个角落</p>
+                        <p>你最喜欢在<span class="keyword">深夜</span>发帖。万籁俱寂中，你悄然活跃于茶楼的各个角落</p>
                     <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
                         <p>你最喜欢在<span class="keyword">上午</span>发帖。晨光中，你的身影在闪耀</p>
                     <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
-                        <p>你最喜欢在<span class="keyword">下午</span>发帖。树洞陪伴着你，享受午间的阳光与温柔</p>
+                        <p>你最喜欢在<span class="keyword">下午</span>发帖。茶楼陪伴着你，享受午间的阳光与温柔</p>
                     <?php else: ?>
-                        <p>你最喜欢在<span class="keyword">夜幕降临</span>时发帖。在这里，你放下白天的奔波苦辛，与洞友们畅聊、欢聚
+                        <p>你最喜欢在<span class="keyword">夜幕降临</span>时发帖。在这里，你放下白天的奔波苦辛，与茶友们畅聊、欢聚
                         </p>
                     <?php endif; ?>
                 </div>
@@ -348,7 +377,7 @@
                             <strong class="keyword">
                                 <?php echo $latest_post['date'] ?>
                             </strong>
-                            这一天，你在树洞流连到很晚
+                            这一天，你在茶楼流连到很晚
                         </p>
 
                         <p>
@@ -400,13 +429,13 @@
                     <p>
                         这半年，你在
                         <strong class="keyword">0</strong>
-                        个洞里留下了自己的足迹，一共做出了
+                        个帖里留下了自己的足迹，一共做出了
                         <strong class="keyword">0</strong>
                         条回复，超过了
                         <strong class="keyword">0%</strong>
-                        的洞友
+                        的茶友
                     </p>
-                    <p>原来传说中的潜水员就是你吗？</p>
+                    <p>闷声发大财，原来说的就是你吗？</p>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
                     chevron_left
@@ -544,7 +573,7 @@
         <section class="swiper-slide">
             <div id="report-card">
                 <p id="report-title">
-                    我与旦夕的2022秋季学期
+                    我与旦挞的2024秋季学期
                 </p>
 
                 <ul>
@@ -561,15 +590,15 @@
                             <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
                                 初来乍到请多指教
                             <?php else: ?>
-                                树洞老玩家
+                                茶楼老客户
                             <?php endif; ?>
                         </span>
 
                     <span class="special-tag">
                             <?php if ($total_reply_num['total'] > 50): ?>
-                                树洞大水怪
+                                茶楼大水怪
                             <?php elseif ($total_reply_num['total'] > 0): ?>
-                                冲浪爱好者
+                                喝茶爱好者
                             <?php else: ?>
                                 潜水艇
                             <?php endif; ?>
@@ -588,9 +617,9 @@
                                 <?php if ($reply_count_midnight == $reply_count_time_max): ?>
                                     凌晨三点我睁开了眼
                                 <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
-                                    早起的鸟儿有树洞看
+                                    早起的鸟儿有茶喝
                                 <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
-                                    在夕阳西下时造访旦夕
+                                    在夕阳西下时造访茶楼
                                 <?php else: ?>
                                     和夜幕一起降临
                                 <?php endif; ?>
@@ -599,6 +628,14 @@
 
                     <?php if ($report_num['total'] > 0): ?>
                         <span class="special-tag">参与社区管理</span>
+                    <?php endif; ?>
+
+                    <?php if ($total_review_num['total'] > 0): ?>
+                        <span class="special-tag">埋下一颗种子</span>
+                    <?php endif; ?>
+
+                    <?php if ($total_sticker_num['total'] > 0): ?>
+                        <span class="special-tag">古希腊掌管旦挞猫猫的神</span>
                     <?php endif; ?>
                 </p>
             </div>

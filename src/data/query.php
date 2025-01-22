@@ -46,20 +46,20 @@ $total_hole_num = query_one(
     "SELECT COUNT(*) AS total
 FROM hole 
 WHERE user_id = ?
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $total_hole_reply_num = query_one(
     "SELECT COUNT(*) AS total
 FROM hole 
 WHERE user_id = ?
   AND reply > 0
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $highest_reply_hole = query_one(
     "SELECT hole.id, reply, content
 FROM hole JOIN floor ON hole.id = floor.hole_id
 WHERE hole.user_id = ?
-  AND hole.created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND hole.created_at BETWEEN '2024-6-30' AND '2025-01-04'
 ORDER BY reply DESC, floor.id
 LIMIT 1;");
 
@@ -67,44 +67,54 @@ $total_reply_num = query_one(
     "SELECT COUNT(*) AS total
 FROM floor
 WHERE user_id = ?
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $highest_fav_num = query_one(
     "SELECT COUNT(*) AS total
 FROM hole JOIN user_favorites
 ON hole.id = user_favorites.hole_id
 WHERE hole.user_id = ?
-  AND hole.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND hole.created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $highest_like_num = query_one(
     "SELECT floor_id, SUM(like_data) AS likes, content
 FROM floor_like JOIN floor
 ON floor_like.floor_id = floor.id
 WHERE floor.user_id = ?
-  AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND floor.created_at BETWEEN '2024-6-30' AND '2025-01-04'
 GROUP BY floor_id
 ORDER BY likes DESC
 LIMIT 1;");
+
+$total_review_num = query_one(
+  "SELECT count(*) AS review_count 
+  FROM review WHERE reviewer_id = ?
+  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04';");
+
+$total_sticker_num = query_one(
+  "SELECT SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_')) AS total_emoji_count
+  FROM floor
+  WHERE user_id = ? AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-03'");
 
 $report_num = query_one(
     "SELECT COUNT(*) AS total
 FROM report
 WHERE user_id = ?
-AND created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+AND created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $report_delete_num = query_one(
     "SELECT COUNT(DISTINCT floor.id) AS total
 FROM report JOIN floor ON floor.id = report.floor_id
 WHERE floor.deleted = true
   AND report.user_id = ?
-  AND report.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND report.created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 
 $most_focused_post = query_one(
     "SELECT hole_id, COUNT(id) AS reply
 FROM floor
 WHERE user_id = ?
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04'
   AND NOT deleted
 GROUP BY hole_id
 ORDER BY reply DESC
@@ -125,7 +135,7 @@ $most_reply_day = query_one(
     "SELECT DATE(DATE_ADD(created_at, INTERVAL 8 HOUR)) AS date, COUNT(*) as reply
 FROM floor
 WHERE user_id = ?
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04'
   AND NOT deleted
 GROUP BY date
 ORDER BY reply DESC
@@ -148,25 +158,25 @@ $total_like = query_one(
     "SELECT SUM(like_data) AS likes
 FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
 WHERE floor.user_id = ?
-  AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND floor.created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $total_like_others = query_one("
 SELECT COUNT(floor_like.floor_id) AS likes
 FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
 WHERE floor_like.user_id = ?
-AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+AND floor.created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $total_replied_hole_num = query_one(
     "SELECT COUNT(DISTINCT hole_id) AS total
 FROM floor
 WHERE user_id = ?
-  AND created_at BETWEEN '2022-6-26' AND '2023-01-07';");
+  AND created_at BETWEEN '2024-6-30' AND '2025-01-04';");
 
 $most_mentioned = query_one(
     "SELECT floor.id, content, COUNT(floor_mention.floor_id) AS count
 FROM floor JOIN floor_mention ON floor.id = floor_mention.mention_id
 WHERE floor.user_id = ?
-  AND floor.created_at BETWEEN '2022-6-26' AND '2023-01-07'
+  AND floor.created_at BETWEEN '2024-6-30' AND '2025-01-04'
 GROUP BY floor_mention.mention_id
 ORDER BY count DESC
 LIMIT 1;");
@@ -177,7 +187,7 @@ function query_reply_count_time($begin, $end)
     $statement = $conn->prepare("SELECT COUNT(id) AS total
                                         FROM floor
                                         WHERE user_id = ?
-                                          AND created_at BETWEEN '2022-6-26' AND '2023-01-07'
+                                          AND created_at BETWEEN '2024-6-30' AND '2025-01-04'
                                           AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN ? AND ?;");
     $statement->bind_param('iss', $user_id, $begin, $end);
     $statement->execute();
@@ -197,7 +207,7 @@ $latest_post = query_one(
        id, content
 FROM floor
 WHERE user_id = ?
-  AND DATE_ADD(created_at, INTERVAL 8 HOUR) BETWEEN '2022-6-26' AND '2023-01-07'
+  AND DATE_ADD(created_at, INTERVAL 8 HOUR) BETWEEN '2024-6-30' AND '2025-01-04'
   AND TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) BETWEEN '00:00:00' AND '05:00:00'
 ORDER BY TIME(DATE_ADD(created_at, INTERVAL 8 HOUR)) DESC
 LIMIT 1;");
