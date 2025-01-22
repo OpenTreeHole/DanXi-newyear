@@ -279,7 +279,7 @@ $latest_post = query_one(
         (TIME(created_at) >= '05:00:00' AND NOT EXISTS (
             SELECT 1
             FROM floor
-            WHERE user_id = ?
+            WHERE user_id = floor.user_id
               AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
               AND TIME(created_at) < '05:00:00'
         ))
@@ -340,15 +340,15 @@ ORDER BY tag_num DESC LIMIT 1;");
 $most_replied_anonyname_in_a_hole = query_one(
   "SELECT COUNT(*) AS reply_times, hole_id, anonyname
   FROM floor
-  WHERE hole_id IN (
+  WHERE user_id != ?
+    AND hole_id IN (
       SELECT id
       FROM hole
-      WHERE user_id = ?
+      WHERE user_id = hole.user_id
         AND deleted_at IS NULL
         AND hidden = FALSE
         AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
   )
-    AND user_id != ?
   GROUP BY hole_id, anonyname
   ORDER BY reply_times DESC
   LIMIT 1;"
