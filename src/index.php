@@ -553,7 +553,7 @@
                         <strong class="keyword">
                             <?php echo $most_replied_anonyname_in_a_hole['anonyname'] ?>
                         </strong>
-                        的对话吗？ta 在你的帖子
+                        的对话吗？ Ta 在你的帖子
                         <strong class="keyword">
                             #<?php echo $most_replied_anonyname_in_a_hole['hole_id'] ?>
                         </strong>

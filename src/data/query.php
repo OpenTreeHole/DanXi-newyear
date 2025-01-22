@@ -150,7 +150,7 @@ $total_review_num = query_danke_one(
   AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;");
 
 $total_sticker_num = query_one(
-  "SELECT SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_')) AS total
+  "SELECT FLOOR(SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_'))) AS total
   FROM floor
   WHERE user_id = ? AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;");
 
@@ -271,7 +271,7 @@ $latest_post = query_one(
           id,
           content
   FROM floor
-  WHERE user_id = ?
+  WHERE user_id = ? AND deleted = FALSE
     AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
     AND (
         (TIME(created_at) < '05:00:00')
