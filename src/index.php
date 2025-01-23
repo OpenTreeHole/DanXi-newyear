@@ -310,7 +310,7 @@
                         <strong class="keyword">
                             <?php echo $most_reply_day['reply'] ?>
                         </strong>
-                        条帖子
+                        条内容
                     </p>
                     <p>
                         这一天对你来说，是不是有什么特殊意义？
@@ -456,17 +456,19 @@
 
         <!-- 点赞与收藏 -->
         <section class="swiper-slide">
-            <div class="segment">
-                <p>
-                    这学期，你一共收获了
-                    <strong class="keyword">
-                        <?php echo $total_like['likes'] ?>
-                    </strong>
-                    次点赞！
-                </p>
-                <p>每一次点赞，都是一份肯定与赞美</p>
-                <p>今后也请多多产出哦！</p>
-            </div>
+            <?php if ($total_like['likes'] > 0): ?>
+                <div class="segment">
+                    <p>
+                        这学期，你一共收获了
+                        <strong class="keyword">
+                            <?php echo $total_like['likes'] ?>
+                        </strong>
+                        次点赞！
+                    </p>
+                    <p>每一次点赞，都是一份肯定与赞美</p>
+                    <p>今后也请多多产出哦！</p>
+                </div>
+            <?php endif; ?>
 
             <div class="segment">
                 <?php if ($total_like_others['likes'] > 0): ?>
@@ -628,7 +630,9 @@
                     <li>被收藏：<?php echo $my_posts_favorited_count['total'] ?></li>
                     <li>订阅：<?php echo $my_subscription_count['total'] ?></li>
                     <li>被订阅：<?php echo $my_posts_subscribed_count['total'] ?></li>
-                    <li>回帖最多的日子：<?php echo $most_reply_day['date'] ?></li>
+                    <?php if ($most_reply_day['date']): ?>
+                        <li>回帖最多的日子：<?php echo $most_reply_day['date'] ?></li>
+                    <?php endif; ?>
                 </ul>
 
                 <p id="report-tags">

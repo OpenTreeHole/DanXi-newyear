@@ -213,16 +213,27 @@ if ($most_reply_day != false) {
 }
 
 $total_like = query_one(
-    "SELECT SUM(like_data) AS likes
-FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
-WHERE floor.user_id = ?
-  AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;");
+  "SELECT count(like_data) AS likes
+  FROM floor_like 
+  JOIN floor ON floor_like.floor_id = floor.id
+  WHERE floor.user_id = ? 
+    AND like_data = 1
+    AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' 
+  LIMIT 1;"
+);
 
 $total_like_others = query_one(
-  "SELECT COUNT(floor_like.floor_id) AS likes
-FROM floor_like JOIN floor ON floor_like.floor_id = floor.id
-WHERE floor_like.user_id = ?
-AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;");
+  "SELECT COUNT(like_data) AS likes
+  FROM floor_like 
+  WHERE floor_id IN (
+      SELECT id 
+      FROM floor 
+      WHERE floor.user_id = ? 
+        AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+  )
+  AND like_data = 1 
+  LIMIT 1;"
+);
 
 $total_replied_hole_num = query_one(
     "SELECT COUNT(DISTINCT hole_id) AS total
