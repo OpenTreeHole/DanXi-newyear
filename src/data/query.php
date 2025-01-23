@@ -338,13 +338,16 @@ GROUP BY ht.tag_id, t.name
 ORDER BY tag_num DESC LIMIT 1;");
 
 $most_replied_anonyname_in_a_hole = query_one(
-  "SELECT COUNT(*) AS reply_times, hole_id, anonyname
+  "WITH tmp_user AS (
+      SELECT ? AS user_id
+  )
+  SELECT COUNT(*) AS reply_times, hole_id, anonyname
   FROM floor
-  WHERE user_id != ?
+  WHERE user_id != (SELECT user_id FROM tmp_user)
     AND hole_id IN (
       SELECT id
       FROM hole
-      WHERE user_id = hole.user_id
+      WHERE user_id = (SELECT user_id FROM tmp_user)
         AND deleted_at IS NULL
         AND hidden = FALSE
         AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
