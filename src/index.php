@@ -68,10 +68,10 @@
                         </strong>
                         个日日夜夜~
                     </p>
-                    <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
-                        <p>新的一年，也请多指教喵</p>
+                    <?php if ($user_register_time > new DateTime('2024-01-01')): ?>
+                        <p>新的一年，也请多指教喵！</p>
                     <?php else: ?>
-                        <p>原来你是老茶友了！未来的路，让我们一起走下去喵</p>
+                        <p>原来你是老茶友了！未来的路，让我们一起走下去喵~</p>
                     <?php endif; ?>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
@@ -652,7 +652,7 @@
 
                     <p id="report-tags">
                         <span class="special-tag">
-                            <?php if ($user_register_time > new DateTime('2022-6-30')): ?>
+                            <?php if ($user_register_time > new DateTime('2024-01-01')): ?>
                                 初来乍到请多指教
                             <?php else: ?>
                                 茶楼老客户
