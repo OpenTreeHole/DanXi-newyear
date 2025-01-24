@@ -212,17 +212,17 @@ if ($most_reply_day != false) {
     $most_reply_day_content = $statement->get_result();
 }
 
-$total_like = query_one(
+$total_like_others = query_one(
   "SELECT count(like_data) AS likes
   FROM floor_like 
   JOIN floor ON floor_like.floor_id = floor.id
-  WHERE floor.user_id = ? 
+  WHERE floor_like.user_id = ? 
     AND like_data = 1
     AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' 
   LIMIT 1;"
 );
 
-$total_like_others = query_one(
+$total_like = query_one(
   "SELECT COUNT(like_data) AS likes
   FROM floor_like 
   WHERE floor_id IN (
