@@ -59,7 +59,7 @@
                     <strong class="keyword">
                         <?php echo $user_info['joined_time'] ?>
                     </strong>
-                    ，你注册了旦挞。
+                    ，你注册了旦挞
                 </p>
                 <p>
                     至今为止，旦挞已经陪伴你走过了
@@ -190,7 +190,7 @@
                     <?php else: ?>
                         <p>##后跳动的数字，也有你的一点一滴</p>
                     <?php endif; ?>
-                    <p></p>
+                    <br>
                     <p>2024年，茶楼上线表情包功能</p>
                     <p>半年来，
                         <strong class="keyword">
