@@ -190,6 +190,7 @@
                     <?php else: ?>
                         <p>##后跳动的数字，也有你的一点一滴</p>
                     <?php endif; ?>
+                    <p></p>
                     <p>2024年，茶楼上线表情包功能</p>
                     <p>半年来，
                         <strong class="keyword">
@@ -565,8 +566,8 @@
                         </strong>
                         条回复
                         <br>
-                        无论是温暖的互动，还是激烈的辩论，你们都为彼此留下了宝贵的记忆
                     </p>
+                    <p>无论是温暖的互动，还是激烈的辩论，你们都为彼此留下了宝贵的记忆</p>
                 </div>
                 <span class="material-symbols-outlined" id="indicator">
                     chevron_left
