@@ -63,10 +63,12 @@ body {
         margin-left: 50%;
         margin-right: 50%;
     }
+
     25% {
         margin-left: 40%;
         margin-right: 60%;
     }
+
     100% {
         margin-left: 50%;
         margin-right: 50%;
@@ -148,7 +150,7 @@ blockquote {
 }
 
 .quote-id {
-    color: rgba(255, 255, 255, 0.4);;
+    color: rgba(255, 255, 255, 0.4);
     font-size: 0.9em;
 }
 
@@ -216,4 +218,11 @@ body {
 
 .swiper-quote blockquote {
     width: 75%;
+}
+
+p {
+    margin: 1em 0;
+    /* 默认的上、下外边距 */
+    line-height: 1em;
+    /* 设置与 margin 一致的行高 */
 }
