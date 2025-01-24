@@ -221,8 +221,8 @@ body {
 }
 
 p {
-    margin: 2em 0;
+    margin: 1.4em 0;
     /* 默认的上、下外边距 */
-    line-height: 2em;
+    line-height: 1.4em;
     /* 设置与 margin 一致的行高 */
 }
