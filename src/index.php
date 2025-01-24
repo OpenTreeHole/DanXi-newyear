@@ -312,8 +312,7 @@
                                 <?php echo $most_reply_day['reply'] ?>
                             </strong>
                             条内容
-                        </p>
-                        <p>
+                            <br>
                             这一天对你来说，是不是有什么特殊意义？
                         </p>
                         <p>（左右滑动查看更多回帖）</p>
@@ -356,13 +355,28 @@
                 <section class="swiper-slide">
                     <div class="segment">
                         <?php if ($reply_count_midnight == $reply_count_time_max): ?>
-                            <p>你最喜欢在<span class="keyword">深夜</span>发帖。万籁俱寂中，你悄然活跃于茶楼的各个角落</p>
+                            <p>
+                                你最喜欢在<span class="keyword">深夜</span>发帖。
+                                <br>
+                                万籁俱寂中，你悄然活跃于茶楼的各个角落
+                            </p>
                         <?php elseif ($reply_count_morning == $reply_count_time_max): ?>
-                            <p>你最喜欢在<span class="keyword">上午</span>发帖。晨光中，你的身影在闪耀</p>
+                            <p>
+                                你最喜欢在<span class="keyword">上午</span>发帖。
+                                <br>
+                                晨光中，你的身影在闪耀
+                            </p>
                         <?php elseif ($reply_count_afternoon == $reply_count_time_max): ?>
-                            <p>你最喜欢在<span class="keyword">下午</span>发帖。茶楼陪伴着你，享受午间的阳光与温柔</p>
+                            <p>
+                                你最喜欢在<span class="keyword">下午</span>发帖。
+                                <br>
+                                茶楼陪伴着你，享受午间的阳光与温柔
+                            </p>
                         <?php else: ?>
-                            <p>你最喜欢在<span class="keyword">夜幕降临</span>时发帖。在这里，你放下白天的奔波苦辛，与茶友们畅聊、欢聚
+                            <p>
+                                你最喜欢在<span class="keyword">夜幕降临</span>时发帖。
+                                <br>
+                                在这里，你放下白天的奔波苦辛，与茶友们畅聊、欢聚
                             </p>
                         <?php endif; ?>
                     </div>
