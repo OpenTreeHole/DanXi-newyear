@@ -9,8 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.fduhole.com/img/icons/favicon-16x16.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet"
-        href="src/assets/material-symbols-outlined.css" />
+    <link rel="stylesheet" href="material-symbols-outlined.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
