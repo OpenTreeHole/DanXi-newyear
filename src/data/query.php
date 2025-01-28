@@ -105,8 +105,7 @@ WHERE hole_id IN (
     SELECT id
     FROM hole
     WHERE user_id = ?
-      AND deleted_at IS NOT NULL
-      AND hidden = FALSE
+      AND deleted_at IS NULL
       AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04') LIMIT 1;"
 );
 
@@ -117,8 +116,7 @@ WHERE hole_id IN (
     SELECT id
     FROM hole
     WHERE user_id = ?
-      AND deleted_at IS NOT NULL
-      AND hidden = FALSE
+      AND deleted_at IS NULL
       AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04') LIMIT 1;"
 );
 
