@@ -2,6 +2,10 @@
 
 require 'connect_db.php';
 
+// 统计时间范围
+$start_date = '2025-02-09';
+$end_date = '2026-01-10';
+
 if (getenv("MODE") == "PRODUCTION") {
   if (
     !array_key_exists('HTTP_X_CONSUMER_USERNAME', $_SERVER) ||
@@ -59,7 +63,7 @@ $total_hole_num = query_one(
   "SELECT COUNT(*) AS total
 FROM hole 
 WHERE user_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $total_hole_reply_num = query_one(
@@ -67,7 +71,7 @@ $total_hole_reply_num = query_one(
 FROM hole 
 WHERE user_id = ?
   AND reply > 0
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $highest_reply_hole = query_one(
@@ -79,7 +83,7 @@ $highest_reply_hole = query_one(
             FROM hole
             WHERE user_id = ?
               AND deleted_at IS NULL
-              AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+              AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
         )
         GROUP BY hole_id
         ORDER BY reply DESC
@@ -95,7 +99,7 @@ $total_reply_num = query_one(
   "SELECT COUNT(*) AS total
 FROM floor
 WHERE user_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $my_posts_favorited_count = query_one(
@@ -106,7 +110,7 @@ WHERE hole_id IN (
     FROM hole
     WHERE user_id = ?
       AND deleted_at IS NULL
-      AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04') LIMIT 1;"
+      AND DATE(created_at) BETWEEN '$start_date' AND '$end_date') LIMIT 1;"
 );
 
 $my_posts_subscribed_count = query_one(
@@ -117,14 +121,14 @@ WHERE hole_id IN (
     FROM hole
     WHERE user_id = ?
       AND deleted_at IS NULL
-      AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04') LIMIT 1;"
+      AND DATE(created_at) BETWEEN '$start_date' AND '$end_date') LIMIT 1;"
 );
 
 $my_favorites_count = query_one(
   "SELECT COUNT(hole_id) AS total
   FROM user_favorites 
   WHERE user_id = ? 
-    AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+    AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
     LIMIT 1"
 );
 
@@ -132,7 +136,7 @@ $my_subscription_count = query_one(
   "SELECT COUNT(hole_id) AS total
   FROM user_subscription 
   WHERE user_id = ? 
-    AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+    AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   LIMIT 1"
 );
 
@@ -143,7 +147,7 @@ JOIN (
     SELECT id, content
     FROM floor
     WHERE floor.user_id = ?
-      AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+      AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
 ) AS new_floor
     ON floor_like.floor_id = new_floor.id
 WHERE like_data = 1
@@ -155,20 +159,20 @@ LIMIT 1;"
 $total_review_num = query_danke_one(
   "SELECT count(*) AS total 
   FROM review WHERE reviewer_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $total_sticker_num = query_one(
   "SELECT FLOOR(SUM((LENGTH(content) - LENGTH(REPLACE(content, '![](dx_', ''))) / LENGTH('![](dx_'))) AS total
   FROM floor
-  WHERE user_id = ? AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  WHERE user_id = ? AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $report_num = query_one(
   "SELECT COUNT(*) AS total
 FROM report
 WHERE user_id = ?
-AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $report_delete_num = query_one(
@@ -176,7 +180,7 @@ $report_delete_num = query_one(
 FROM report JOIN floor ON floor.id = report.floor_id
 WHERE floor.deleted = true
   AND report.user_id = ?
-  AND DATE(report.created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(report.created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 
@@ -184,7 +188,7 @@ $most_focused_post = query_one(
   "SELECT hole_id, COUNT(id) AS reply
 FROM floor
 WHERE user_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   AND NOT deleted
 GROUP BY hole_id
 ORDER BY reply DESC
@@ -206,7 +210,7 @@ $most_reply_day = query_one(
   "SELECT DATE(created_at) AS date, COUNT(*) as reply
 FROM floor
 WHERE user_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   AND NOT deleted
 GROUP BY date
 ORDER BY reply DESC
@@ -232,7 +236,7 @@ $total_like_others = query_one(
   JOIN floor ON floor_like.floor_id = floor.id
   WHERE floor_like.user_id = ? 
     AND like_data = 1
-    AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' 
+    AND DATE(floor.created_at) BETWEEN '$start_date' AND '$end_date' 
   LIMIT 1;"
 );
 
@@ -242,7 +246,7 @@ $total_dislike_others = query_one(
   JOIN floor ON floor_like.floor_id = floor.id
   WHERE floor_like.user_id = ? 
     AND like_data = -1
-    AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' 
+    AND DATE(floor.created_at) BETWEEN '$start_date' AND '$end_date' 
   LIMIT 1;"
 );
 
@@ -253,7 +257,7 @@ $total_like = query_one(
       SELECT id 
       FROM floor 
       WHERE floor.user_id = ? 
-        AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+        AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   )
   AND like_data = 1 
   LIMIT 1;"
@@ -263,14 +267,14 @@ $total_replied_hole_num = query_one(
   "SELECT COUNT(DISTINCT hole_id) AS total
 FROM floor
 WHERE user_id = ?
-  AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+  AND DATE(created_at) BETWEEN '$start_date' AND '$end_date' LIMIT 1;"
 );
 
 $avg_reply_length = query_one(
   "SELECT AVG(LENGTH(content)) AS avg_length
   FROM floor
   WHERE user_id = ?
-    AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+    AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   LIMIT 1;"
 );
 
@@ -284,7 +288,7 @@ $avg_replies_per_post = query_one(
       FROM hole
       WHERE user_id = ?
         AND deleted_at IS NULL
-        AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+        AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
     )
     GROUP BY hole_id
   ) AS hole_replies
@@ -298,7 +302,7 @@ $most_mentioned = query_one(
       SELECT id, content
       FROM floor
       WHERE user_id = ?
-        AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+        AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   ) AS new_floor
   ON floor_mention.mention_id = new_floor.id
   GROUP BY floor_mention.mention_id
@@ -308,11 +312,11 @@ $most_mentioned = query_one(
 
 function query_reply_count_time($begin, $end)
 {
-  global $conn, $user_id;
+  global $conn, $user_id, $start_date, $end_date;
   $statement = $conn->prepare("SELECT COUNT(id) AS total
                                         FROM floor
                                         WHERE user_id = ?
-                                          AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+                                          AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
                                           AND TIME(created_at) BETWEEN ? AND ?;");
   $statement->bind_param('iss', $user_id, $begin, $end);
   $statement->execute();
@@ -333,7 +337,7 @@ $latest_post = query_one(
           content
   FROM floor
   WHERE user_id = ? AND deleted = FALSE
-    AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+    AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
     AND (
         (TIME(created_at) < '05:00:00')
         OR
@@ -341,7 +345,7 @@ $latest_post = query_one(
             SELECT 1
             FROM floor
             WHERE user_id = floor.user_id
-              AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+              AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
               AND TIME(created_at) < '05:00:00'
         ))
     )
@@ -356,7 +360,7 @@ $earliest_post = query_one(
           content
   FROM floor
   WHERE user_id = ?
-    AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+    AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
     AND TIME(created_at) > '05:00:00'
   ORDER BY TIME(created_at)
   LIMIT 1;"
@@ -373,7 +377,7 @@ FROM hole_tags AS ht
     FROM hole
     WHERE user_id = ?
       AND deleted_at IS NULL
-      AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+      AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
 ) AS h_filtered
               ON ht.hole_id = h_filtered.id
          JOIN tag AS t
@@ -392,7 +396,7 @@ FROM hole_tags AS ht
     SELECT hole_id
     FROM floor
     WHERE user_id = ?
-      AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+      AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
 ) AS h_filtered
               ON ht.hole_id = h_filtered.hole_id
          JOIN tag AS t
@@ -414,7 +418,7 @@ $most_replied_anonyname_in_a_hole = query_one(
       WHERE user_id = (SELECT user_id FROM tmp_user)
         AND deleted_at IS NULL
         AND hidden = FALSE
-        AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+        AND DATE(created_at) BETWEEN '$start_date' AND '$end_date'
   )
   GROUP BY hole_id, anonyname
   ORDER BY reply_times DESC

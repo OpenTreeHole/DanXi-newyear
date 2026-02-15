@@ -28,7 +28,7 @@
                             茶楼年终总结报告
                         </b>
                         <p>
-                            2024 秋学期<br />（2024.6.30 - 2025.1.4）
+                            2025 年<br />（2025.2.9 - 2026.1.10）
                         </p>
                     </div>
 
@@ -67,7 +67,7 @@
                         </strong>
                         个日日夜夜~
                     </p>
-                    <?php if ($user_register_time > new DateTime('2024-01-01')): ?>
+                    <?php if ($user_register_time > new DateTime('2025-01-01')): ?>
                         <p>新的一年，也请多指教喵！</p>
                     <?php else: ?>
                         <p>原来你是老茶友了！未来的路，让我们一起走下去喵~</p>
@@ -171,7 +171,7 @@
                 <section class="swiper-slide">
                     <div class="segment">
                         <p>
-                            这半年，你在
+                            这一年，你在
                             <strong class="keyword">
                                 <?php echo $total_replied_hole_num['total'] ?>
                             </strong>
@@ -190,8 +190,8 @@
                             <p>##后跳动的数字，也有你的一点一滴</p>
                         <?php endif; ?>
                         <br>
-                        <p>2024年，茶楼上线表情包功能</p>
-                        <p>半年来，
+                        <p>2025年，茶楼表情包陪你度过每一天</p>
+                        <p>一年来，
                             <strong class="keyword">
                                 <?php echo $total_sticker_num['total'] ?>
                             </strong>
@@ -452,7 +452,7 @@
                 <section class="swiper-slide">
                     <div class="segment">
                         <p>
-                            这半年，你在
+                            这一年，你在
                             <strong class="keyword">0</strong>
                             个帖里留下了自己的足迹，一共做出了
                             <strong class="keyword">0</strong>
@@ -669,7 +669,7 @@
                 <div class="segment">
                     <p>没有一个声音无人听见，</p>
                     <p>没有一句话语不曾洞见真心。</p>
-                    <p>谨以此纪念过去的半年，</p>
+                    <p>谨以此纪念过去的一年，</p>
                     <p>并期待繁花盛开的春天。</p>
                 </div>
 
@@ -685,7 +685,7 @@
             <section class="swiper-slide">
                 <div id="report-card">
                     <p id="report-title">
-                        我与旦挞的2024秋季学期
+                        我与旦挞的2025
                     </p>
 
                     <ul>
@@ -707,7 +707,7 @@
 
                     <p id="report-tags">
                         <span class="special-tag">
-                            <?php if ($user_register_time > new DateTime('2024-01-01')): ?>
+                            <?php if ($user_register_time > new DateTime('2025-01-01')): ?>
                                 初来乍到请多指教
                             <?php else: ?>
                                 茶楼老客户
