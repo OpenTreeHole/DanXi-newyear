@@ -236,6 +236,16 @@ $total_like_others = query_one(
   LIMIT 1;"
 );
 
+$total_dislike_others = query_one(
+  "SELECT count(like_data) AS dislikes
+  FROM floor_like 
+  JOIN floor ON floor_like.floor_id = floor.id
+  WHERE floor_like.user_id = ? 
+    AND like_data = -1
+    AND DATE(floor.created_at) BETWEEN '2024-6-30' AND '2025-01-04' 
+  LIMIT 1;"
+);
+
 $total_like = query_one(
   "SELECT COUNT(like_data) AS likes
   FROM floor_like 
@@ -254,6 +264,31 @@ $total_replied_hole_num = query_one(
 FROM floor
 WHERE user_id = ?
   AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04' LIMIT 1;"
+);
+
+$avg_reply_length = query_one(
+  "SELECT AVG(LENGTH(content)) AS avg_length
+  FROM floor
+  WHERE user_id = ?
+    AND DATE(created_at) BETWEEN '2024-6-30' AND '2025-01-04'
+  LIMIT 1;"
+);
+
+$avg_replies_per_post = query_one(
+  "SELECT AVG(reply_count) AS avg_replies
+  FROM (
+    SELECT hole_id, COUNT(*) - 1 AS reply_count
+    FROM floor
+    WHERE hole_id IN (
+      SELECT id
+      FROM hole
+      WHERE user_id = ?
+        AND deleted_at IS NULL
+        AND DATE(created_at) BETWEEN '2024-06-30' AND '2025-01-04'
+    )
+    GROUP BY hole_id
+  ) AS hole_replies
+  LIMIT 1;"
 );
 
 $most_mentioned = query_one(

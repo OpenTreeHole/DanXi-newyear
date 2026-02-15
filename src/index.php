@@ -496,6 +496,15 @@
                         <p>本学期你还没给其他人点过赞……</p>
                         <p>答应我，下次一定！</p>
                     <?php endif; ?>
+                    
+                    <?php if ($total_dislike_others['dislikes'] > 0): ?>
+                        <p>
+                            你给他人点了
+                            <strong class="keyword"><?php echo $total_dislike_others['dislikes'] ?></strong>
+                            个踩
+                        </p>
+                        <p>看来你也有自己的态度呢</p>
+                    <?php endif; ?>
                 </div>
 
                 <div class="segment">
@@ -516,6 +525,50 @@
                     chevron_left
                 </span>
             </section>
+
+            <!-- 回复统计 -->
+            <?php if ($total_reply_num['total'] > 0): ?>
+            <section class="swiper-slide">
+                <div class="segment">
+                    <p>
+                        你的平均回复长度是
+                        <strong class="keyword">
+                            <?php echo $avg_reply_length['avg_length'] ? round($avg_reply_length['avg_length'], 1) : 0 ?>
+                        </strong>
+                        个字符
+                    </p>
+                    <?php if ($avg_reply_length['avg_length'] > 200): ?>
+                        <p>看来你是一个善于表达的人，每次回复都很详细呢！</p>
+                    <?php elseif ($avg_reply_length['avg_length'] > 50): ?>
+                        <p>不长不短，恰到好处~</p>
+                    <?php else: ?>
+                        <p>言简意赅，这也是一种风格！</p>
+                    <?php endif; ?>
+                </div>
+
+                <?php if ($total_hole_num['total'] > 0 && $avg_replies_per_post['avg_replies'] !== null): ?>
+                <div class="segment">
+                    <p>
+                        你的每个帖子平均能收到
+                        <strong class="keyword">
+                            <?php echo round($avg_replies_per_post['avg_replies'], 1) ?>
+                        </strong>
+                        条回复
+                    </p>
+                    <?php if ($avg_replies_per_post['avg_replies'] > 10): ?>
+                        <p>你的帖子总能引发热烈的讨论！</p>
+                    <?php elseif ($avg_replies_per_post['avg_replies'] > 3): ?>
+                        <p>你的话题总有人愿意回应</p>
+                    <?php else: ?>
+                        <p>每一次互动都很珍贵</p>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+                <span class="material-symbols-outlined" id="indicator">
+                    chevron_left
+                </span>
+            </section>
+            <?php endif; ?>
 
             <?php if ($most_mentioned and $most_mentioned['count'] > 0): ?>
                 <!-- 被引用最多的帖子 -->
@@ -636,16 +689,19 @@
                     </p>
 
                     <ul>
-                        <li>发帖：<?php echo $total_hole_num['total'] ?></li>
-                        <li>回复：<?php echo $total_reply_num['total'] ?></li>
-                        <li>点赞：<?php echo $total_like_others['likes'] ?></li>
-                        <li>被赞：<?php echo $total_like['likes'] ?></li>
-                        <li>收藏：<?php echo $my_favorites_count['total'] ?></li>
-                        <li>被收藏：<?php echo $my_posts_favorited_count['total'] ?></li>
-                        <li>订阅：<?php echo $my_subscription_count['total'] ?></li>
-                        <li>被订阅：<?php echo $my_posts_subscribed_count['total'] ?></li>
+                        <li>发帖:<?php echo $total_hole_num['total'] ?></li>
+                        <li>回复:<?php echo $total_reply_num['total'] ?></li>
+                        <li>点赞:<?php echo $total_like_others['likes'] ?></li>
+                        <li>点踩:<?php echo $total_dislike_others['dislikes'] ?></li>
+                        <li>被赞:<?php echo $total_like['likes'] ?></li>
+                        <li>收藏:<?php echo $my_favorites_count['total'] ?></li>
+                        <li>被收藏:<?php echo $my_posts_favorited_count['total'] ?></li>
+                        <li>订阅:<?php echo $my_subscription_count['total'] ?></li>
+                        <li>被订阅:<?php echo $my_posts_subscribed_count['total'] ?></li>
+                        <li>平均回复长度:<?php echo $avg_reply_length['avg_length'] ? round($avg_reply_length['avg_length'], 1) : 0 ?> 字</li>
+                        <li>每贴平均被回复数:<?php echo $avg_replies_per_post['avg_replies'] ? round($avg_replies_per_post['avg_replies'], 1) : 0 ?> 条</li>
                         <?php if ($most_reply_day['date']): ?>
-                            <li>回帖最多的日子：<?php echo $most_reply_day['date'] ?></li>
+                            <li>回帖最多的日子:<?php echo $most_reply_day['date'] ?></li>
                         <?php endif; ?>
                     </ul>
 
